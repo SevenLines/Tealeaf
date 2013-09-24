@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+
+body{
+	padding: 0;
+	margin:0;
+	margin-bottom: 2em;
+}
+
+.plain_text{
+	font-family: verdana,helvetica,arial,sans-serif;
+	font-size:0.75em;
+	line-height: 160%;
+	paddinf: 1em 0 1em 0;
+}
+
+.mtyp {
+	font-weight:bold;
+	color: #606;
+	font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+}
+
+.mtag {
+	font-weight:bold;
+	color: #069;
+	font-size:14px;
+	font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+}
+
+.note{
+	background-color: #DFD;	
+	padding:1em;
+	border:solid thin silver;
+	border-radius:6px;
+}
+
+.highlight {
+	background-color: white;	
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.content{
+	margin: 0 auto;
+	max-width: 1000px;
+	padding: 1em 2em 1em 2em ;
+	border: solid 1px silver; 
+	border-top:none;
+	box-shadow:0px 0px 12px silver;
+	border-radius: 0 0 12px 12px;
+}
+
+.plain_text img{
+	display: block;
+	border-radius: 6px;
+	border: solid 3px silver;
+	max-width:500px;
+	max-height:400px;
+	margin: 1em 0 2em 0
+}
+
+.syntaxhighlighter  {
+    border: solid 1px silver;
+    padding: 2px;
+}    
+
+.toolbar {
+    display: none;
+}
+
+.console {
+  font-family:Courier New;
+  color: #CCCCCC;
+  background: #000000;
+  border: 3px double #CCCCCC;
+  padding: 5px;
+  margin: 5px 0;
+  line-height:1.3em;
+}
+.consoleIn {
+  font-family:Courier;
+ color: #CCCCCC;
+  background: #000000;
+  padding: 2px;
+}
+
+.plain_text b{
+	color: darkblue;
+}
+                 
