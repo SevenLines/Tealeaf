@@ -21,8 +21,9 @@ class Pages extends CI_Controller {
 	{
 		$data['title'] = "Tealeaf";
 		$this->load->view('templates/header', $data);
-		$this->load->view('templates/footer', $data);
+		$this->load->view('templates/footer', $data);	
 	}
+
 }
 
 /* End of file welcome.php */

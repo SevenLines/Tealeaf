@@ -1,9 +1,8 @@
 @CHARSET "UTF-8";
 
 body{
-	padding: 0;
 	margin:0;
-	margin-bottom: 2em;
+	padding:0;
 }
 
 .plain_text{
@@ -40,14 +39,19 @@ body{
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.content{
+.wrapper{
 	margin: 0 auto;
 	max-width: 1000px;
-	padding: 1em 2em 1em 2em ;
+	
 	border: solid 1px silver; 
 	border-top:none;
 	box-shadow:0px 0px 12px silver;
 	border-radius: 0 0 12px 12px;
+	padding: 0 0 1em 0 ;
+}
+
+.content{
+	padding: 0 2em;
 }
 
 .plain_text img{
@@ -87,4 +91,131 @@ body{
 .plain_text b{
 	color: darkblue;
 }
+
+h1 {
+	margin:0;
+}
+
+/* MENU */
+
+
+.mainmenu {
+float:left;
+width:100%;
+background:#EEE;
+border-bottom: 1px solid #ccc; 
+border-right: 1px solid #ccc; 	
+margin-bottom: 10px;
+}
+
+.menu {
+font-size:1em;
+list-style: none;
+padding-left:0;
+margin:0;
+}
+
+
+.menu li { 
+float: left; 
+position: relative; 
+/*border-right: 1px solid #ccc;*/ 
+}
+
+.menu li a{ 
+padding:0.8em 1em; 
+height:17px;
+display: block; 
+color: #00AEEF;
+background:#EEE;
+}
+
+.menu li a.selected{ 
+	background:#FFF;
+}
+
+.menu ul li a { 
+padding:0.8em 1em; 
+height:auto;
+display: block; 
+color: #00AEEF;
+border-bottom:1px solid #CCC;
+border-left:1px solid #CCC;
+border-right:1px solid #CCC;
+background:#EEE;
+}
+
+.menu a:hover { 
+background:#FFF;
+}
+
+.menu li a.gallery {
+	width:100px;
+	text-align:center;
+	text-decoration:underline;
+	cursor:pointer;
+	border-left:1px solid #CCC;
+	border-right:1px solid #CCC;
+}
+
+.menu ul.gallery li a {
+	width:100px;
+}
+
+.menu li a.excs {
+	width:140px;
+	text-align:center;
+	text-decoration:underline;
+	cursor:pointer;	
+	border-left:1px solid #CCC;
+	border-right:1px solid #CCC;
+}
+
+
+.menu ul.excs li a {
+	width:140px;
+}
+
+.menu ul { 
+ border: none; 
+ display:none;
+ padding:0;
+ list-style:none;
+ margin:0;
+ position:absolute;
+ box-shadow:0px 2px 2px gray;
+}
+
+.menu a.current{ 
+	background-color: #FFF; 
+	color:black;
+}
+
+.menu a:hover {
+	color: black;	
+}
+
+.menu .about
+{
+	width:39px;
+	height:17px;
+	background-image: url("images/about_button_link.png");
+}
+
+.menu .about:hover
+{
+	background-image: url("images/about_button_active.png");
+}
+
+.menu .about.current
+{
+	background-image: url("images/about_button_active.png");
+}
+
+
+
+.clear {
+	clear:both;
+}
+
                  
