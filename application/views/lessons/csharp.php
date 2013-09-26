@@ -4,9 +4,8 @@
 <script type="text/javascript">
      SyntaxHighlighter.all()
 </script>
-
 <hr>
 <div class="plain_text">
-<?php echo $content; ?>
+<?php echo $articles_info->text; ?>
 </div>
 </div>

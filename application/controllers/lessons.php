@@ -17,38 +17,38 @@ class Lessons extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+     function __construct()
+    {
+        parent::__construct();
+        $this->load->model('LessonsModel');
+    }
+     
 	public function index()
 	{
 		$data['title'] = "Tealeaf";
 		$this->csharp();
 	}
 
-	private function __show($title, $viewName, $selected=false) 
+	private function __show($title, $viewName, $data=array(), $selected=false) 
 	{
-		$data['title'] = $title;
+        $data['title'] = $title;
 		$data['selected'] = $selected;
+        
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/menu', $data);
-		$data['content'] = $this->load->view($viewName,'', true);
-		$this->load->view('language_lessons', $data);
+		
+        $this->load->view($viewName, $data);
 		$this->load->view('templates/footer', $data);
 	}
 
 	public function csharp($page = 0) 
-	{
-		
-		if (isset($page) && $page != 0 ) {
-			switch($page) {
-			case 1:
-				$this->__show('Занятие первое. Работа с консолью', 'static/01-Console');	
-				break;
-			case 2:			
-				$this->__show('Занятие второе. Коллекции', 'static/02-Collections');	
-				break;		
-			}		
-		}	else {
-				
-				$this->__show('Вот список занятий', 'static/Lessons', true);		
+	{	
+		if ( isset($page) && $page != 0 ) {		
+            $data['articles_info'] = $this->LessonsModel->get_article($page);
+            $this->__show($data['articles_info']->name, 'lessons/csharp', $data);	
+		} else {
+            $data['articles_info'] = $this->LessonsModel->get_csharp_articles();
+            $this->__show('Вот список занятий', 'lessons/csharp_main', $data, true);		     
 		}	
 	} 
 }
