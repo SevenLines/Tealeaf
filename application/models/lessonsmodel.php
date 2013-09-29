@@ -9,10 +9,11 @@ class LessonsModel extends ArticlesModel {
         parent::__construct();
     }
     
-    // âîçâðàùàåò ñïèñîê óðîêîâ ïî C#
+    // Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÐ¿Ð¸ÑÐ¾Ðº ÑÑ‚Ð°Ñ‚ÐµÐ¹ C#
     function get_csharp_articles()
     {
-        return $this->get_articles_info_for_category(2);
+        $csharp_article = 2;
+        return $this->get_articles_info_for_category($csharp_article);
     }
     
 }
