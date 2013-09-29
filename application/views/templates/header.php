@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="<?php echo base_url(); ?>/" />
+<base href="<?php echo base_url(); ?>/www/" />
 <link rel="stylesheet" type="text/css" href="styles/shCore.css">
 <link rel="stylesheet" type="text/css" href="styles/shThemeDefault.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
