@@ -43,7 +43,7 @@ a:hover {
 }
 
 .plain_text{
-	font-family: verdana,helvetica,arial,sans-serif;
+	font-family: Verdana,Arial;
 	paddinf: 1em 0 1em 0;
 }
 
@@ -89,6 +89,7 @@ a:hover {
 .note{
 	background-color: #DFD;	
 	padding:1em;
+	margin: 1em 0;
 	border:solid thin silver;
 	border-radius:6px;
 }
@@ -119,7 +120,7 @@ a:hover {
   background: #000000;
   border: 3px double #CCCCCC;
   padding: 5px;
-  margin: 5px 0;
+  margin: 1em 0;
   line-height:1.3em;
 }
 
