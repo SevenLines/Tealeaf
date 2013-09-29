@@ -1,16 +1,76 @@
 @CHARSET "UTF-8";
 
+/* This file contains basic styles for document*/
+
 body{
 	margin:0;
 	padding:0;
+	/*background-color: #EDEDED;*/
+	background-image: url("images/bg_geometry.png");
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+	margin:0;
+	font-weight: normal;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: #003366;
+}
+
+a {
+	color: #00AEEF;
+}
+a:hover {
+	color: #FF7700;
+}
+
+/* Main wrapper wich is hold all contents*/
+.wrapper{
+	margin: 0 auto;
+	margin-bottom: 10em;
+	max-width: 1000px;
+	background-color: #FAFDFA;
+	border: solid 1px silver; 
+	border-top:none;
+	box-shadow:0px 0px 12px silver;
+	border-radius: 0 0 12px 12px;
+	padding: 0 0 1em;
+}
+
+/*All what is below menu*/
+.content{
+	padding: 0 2em;
 }
 
 .plain_text{
 	font-family: verdana,helvetica,arial,sans-serif;
-	font-size:0.75em;
-	line-height: 160%;
 	paddinf: 1em 0 1em 0;
 }
+
+
+/*img style in text*/
+.plain_text img{
+	display: block;
+	border-radius: 6px;
+	border: solid 3px silver;
+	max-width:500px;
+	max-height:400px;
+	margin: 1em 0 2em 0
+}
+
+.plain_text b{
+	color: darkblue;
+}
+
+.lessons_list {
+	display:block;
+	list-style: none;
+	padding-left: 0;
+	margin-top: 0;
+	float: left;
+	font-size: 1.1em;
+}
+
 
 .mtyp {
 	font-weight:bold;
@@ -25,6 +85,7 @@ body{
 	font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
 }
 
+/*Notes, for text that is for info only*/
 .note{
 	background-color: #DFD;	
 	padding:1em;
@@ -39,29 +100,8 @@ body{
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.wrapper{
-	margin: 0 auto;
-	max-width: 1000px;
-	
-	border: solid 1px silver; 
-	border-top:none;
-	box-shadow:0px 0px 12px silver;
-	border-radius: 0 0 12px 12px;
-	padding: 0 0 1em 0 ;
-}
 
-.content{
-	padding: 0 2em;
-}
 
-.plain_text img{
-	display: block;
-	border-radius: 6px;
-	border: solid 3px silver;
-	max-width:500px;
-	max-height:400px;
-	margin: 1em 0 2em 0
-}
 
 .syntaxhighlighter  {
     border: solid 1px silver;
@@ -72,6 +112,7 @@ body{
     display: none;
 }
 
+/* Style for immitating console in DIV block*/
 .console {
   font-family:Courier New;
   color: #CCCCCC;
@@ -81,135 +122,13 @@ body{
   margin: 5px 0;
   line-height:1.3em;
 }
+
+/*Style for immitating console in SPAN block*/
 .consoleIn {
   font-family:Courier;
  color: #CCCCCC;
   background: #000000;
   padding: 2px;
-}
-
-.plain_text b{
-	color: darkblue;
-}
-
-h1 {
-	margin:0;
-}
-
-/* MENU */
-
-
-.mainmenu {
-float:left;
-width:100%;
-background:#EEE;
-border-bottom: 1px solid #ccc; 
-border-right: 1px solid #ccc; 	
-margin-bottom: 10px;
-}
-
-.menu {
-font-size:1em;
-list-style: none;
-padding-left:0;
-margin:0;
-}
-
-
-.menu li { 
-float: left; 
-position: relative; 
-/*border-right: 1px solid #ccc;*/ 
-}
-
-.menu li a{ 
-padding:0.8em 1em; 
-height:17px;
-display: block; 
-color: #00AEEF;
-background:#EEE;
-}
-
-.menu li a.selected{ 
-	background:#FFF;
-}
-
-.menu ul li a { 
-padding:0.8em 1em; 
-height:auto;
-display: block; 
-color: #00AEEF;
-border-bottom:1px solid #CCC;
-border-left:1px solid #CCC;
-border-right:1px solid #CCC;
-background:#EEE;
-}
-
-.menu a:hover { 
-background:#FFF;
-}
-
-.menu li a.gallery {
-	width:100px;
-	text-align:center;
-	text-decoration:underline;
-	cursor:pointer;
-	border-left:1px solid #CCC;
-	border-right:1px solid #CCC;
-}
-
-.menu ul.gallery li a {
-	width:100px;
-}
-
-.menu li a.excs {
-	width:140px;
-	text-align:center;
-	text-decoration:underline;
-	cursor:pointer;	
-	border-left:1px solid #CCC;
-	border-right:1px solid #CCC;
-}
-
-
-.menu ul.excs li a {
-	width:140px;
-}
-
-.menu ul { 
- border: none; 
- display:none;
- padding:0;
- list-style:none;
- margin:0;
- position:absolute;
- box-shadow:0px 2px 2px gray;
-}
-
-.menu a.current{ 
-	background-color: #FFF; 
-	color:black;
-}
-
-.menu a:hover {
-	color: black;	
-}
-
-.menu .about
-{
-	width:39px;
-	height:17px;
-	background-image: url("images/about_button_link.png");
-}
-
-.menu .about:hover
-{
-	background-image: url("images/about_button_active.png");
-}
-
-.menu .about.current
-{
-	background-image: url("images/about_button_active.png");
 }
 
 .text {
@@ -226,5 +145,7 @@ background:#FFF;
 .clear {
 	clear:both;
 }
+
+
 
                  

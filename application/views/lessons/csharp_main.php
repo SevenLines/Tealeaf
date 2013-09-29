@@ -4,9 +4,10 @@
 <hr>
 <ul class="lessons_list">
 <?php foreach($articles_info as $article) { ?>
-<li>
+   	<li>
     <a href="<?php echo site_url().'/lessons/csharp/'.$article->id_;?>"><?php echo $article->name ?></a>
-</li>
+    </li>
 <?php } ?>
 </ul>
+<div class="clear"></div>
 </div>

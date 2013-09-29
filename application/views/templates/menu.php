@@ -9,3 +9,4 @@
   </li>	
  </ul>
 </div>
+<div class="clear"></div>

@@ -13,7 +13,7 @@ class LessonsModel extends ArticlesModel {
     function get_csharp_articles()
     {
         $csharp_article = 2;
-        return $this->get_articles_info_for_category($csharp_article);
+        return $this->get_articles_info_for_category($csharp_article, 0);
     }
     
 }
