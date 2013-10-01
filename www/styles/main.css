@@ -6,7 +6,7 @@ body{
 	margin:0;
 	padding:0;
 	/*background-color: #EDEDED;*/
-	background-image: url("images/bg_geometry.png");
+	background-image: url("images/shattered_small.png");
 	font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -30,7 +30,7 @@ a:hover {
 	margin-bottom: 10em;
 	max-width: 1000px;
 	background-color: #FAFDFA;
-	border: solid 1px silver; 
+	border: solid 2px #003366; 
 	border-top:none;
 	box-shadow:0px 0px 12px silver;
 	border-radius: 0 0 12px 12px;
@@ -159,5 +159,11 @@ a:hover {
 	z-index: 100;
 	background-color: Orange;
 	overflow: scroll;
+}
+
+.footer {
+	height:12px;
+	margin-top:1em;
+	background-color: #003366;
 }
                  

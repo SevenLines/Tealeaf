@@ -1,9 +1,13 @@
 <div class="mainmenu">
+	<div class="mail"> 
+		<script>"".contact('abc', 'htam.mliamm', 'mail.ru');</script>	</div>
 	<ul class="menu">
 		<?php if (isset($menu)) { ?>
 			<?php foreach ($menu as $category) {?>
 		   		<li>
-		   			<a href="<?php echo site_url().'/'.$category[1]; ?>" <?php if(isset($category[3]) && $category[3]) echo 'class="active"'?>>
+		   			<a href="<?php echo site_url().'/'.$category[1]; ?>" 
+		   			<?php if(isset($category[3]) && $category[3]) echo 'class="active"'?>
+		   			>
 		   				<?php echo $category[0]?>
 		   			</a>
 					<?php if (isset($category[2])) { ?>

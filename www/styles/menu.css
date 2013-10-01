@@ -1,28 +1,41 @@
 /* This file contains styles for menu*/
 
 .mainmenu {
-float:left;
-width:100%;
-background:#DDD;
-border-bottom: 1px solid #ccc; 
-border-right: 1px solid #ccc; 	
-margin-bottom: 10px;
+	float:left;
+	width:100%;
+	background:#DDD;
+	border-bottom: 1px solid #ccc;  	
+	margin-bottom: 10px;
+}
+
+.mainmenu .mail {
+	float: right;
+	padding-right:16px;
+	padding-top: 12px;
+	color: gray;
+}
+
+.mainmenu .mail a {
+	color: silver;	
+}
+
+.mainmenu .mail a:hover {
+	color: #003366;	
 }
 
 .menu {
-font-size:1em;
-list-style: none;
-padding-left:0;
-margin:0;
+	font-size:1em;
+	list-style: none;
+	padding-left:0;
+	margin:0;
 }
 
 
 .menu li { 
-float: left; 
-position: relative; 
-border-right: 1px solid #ccc; 
-text-align: center;
-
+	float: left; 
+	position: relative; 
+	border-right: 1px solid #ccc; 
+	text-align: center;
 }
 
 .menu li a{ 
@@ -54,7 +67,7 @@ text-align: center;
 	border-right:1px solid #CCC;
 	margin: -1px;
 	background:#EEE;
-	width:136px;
+	width:9em;
 }
 
 .menu a:hover { 
@@ -63,7 +76,7 @@ background:#FAFDFA;
 
 .menu  a.active{ 
 	background-color: #FAFDFA; 
-	color:black;
+	color:#003366;
 }
 
 .menu a:hover {
