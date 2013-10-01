@@ -22,59 +22,67 @@ class Lessons extends CI_Controller {
         parent::__construct();
         $this->load->model('LessonsModel');
     }
-     
+    
+	/*Called when no paramters set for constructor*/
 	public function index()
 	{
-		$data['title'] = "Tealeaf";
-		$this->__show("\(>_>)/", 'lessons/csharp');
+		$this->showMainPage();
 	}
+	
+	public function showMainPage()
+	{
+		$category_id = 9;
+		$articles_info = $this->LessonsModel->get_article(7);
+		$data['title'] = $articles_info->name;
+		$data['text'] = $articles_info->text;
+		
+		$this->__show($articles_info->name, "article", $data, $category_id);		
+	}
+	
 
-	public function showMenu($data=array())
+	public function showMenu($data=array(), $category_id)
 	{
 		//$data['menu'] = $this->LessonsModel->get_categories_tree();
-		$data['menu'] = $this->LessonsModel->get_menu_array();
+		$data['menu'] = $this->LessonsModel->get_menu_array($category_id);
 		$this->load->view('templates/menu', $data);
 	} 
 
-	private function __show($title, $viewName, $data=array(), $selected=false) 
+	private function __show($title, $viewName, $data=array(), $category_id=0) 
 	{
         $data['title'] = $title;
-		$data['selected'] = $selected;
         
 		$this->load->view('templates/header', $data);
-		$this->showMenu($data);
-		
-        $this->load->view($viewName, $data);
+		$this->showMenu($data, $category_id);
+		if (isset ($viewName)) {
+        	$this->load->view($viewName, $data);
+        }
 		$this->load->view('templates/footer', $data);
 	}
 
 	public function csharp($page = 0) 
-	{	
+	{
+		$category_id = 2;			
 		if ( isset($page) && $page != 0 ) {		
             $data['articles_info'] = $this->LessonsModel->get_article($page);
-            $this->__show($data['articles_info']->name, 'lessons/csharp', $data);	
+            $this->__show($data['articles_info']->name, 'lessons/csharp', $data, $category_id);	
 		} else {
-            /*$data['articles_info'] = $this->LessonsModel->get_csharp_articles();
-            $this->__show('Вот список занятий', 'lessons/csharp_main', $data, true);*/
-            $data['articles'] = $this->LessonsModel->get_articles_list(2);	
-			$data['controller_path'] = $this->LessonsModel->get_category(2)->controller;
-			$this->__show('Вот список занятий', 'lessons/articles_list', $data, true);	     
+            $data['articles'] = $this->LessonsModel->get_articles_list($category_id);	
+			$data['controller_path'] = $this->LessonsModel->get_category($category_id)->controller;
+			$this->__show('Вот список занятий', 'lessons/articles_list', $data, $category_id);	     
 		}		
 	} 
 	
 	public function mlogic($page=0)
 	{
+		$category_id = 4;	
 		if ( isset($page) && $page != 0 ) {		
             $data['articles_info'] = $this->LessonsModel->get_article($page);
-            $this->__show($data['articles_info']->name, 'lessons/csharp', $data);	
+            $this->__show($data['articles_info']->name, 'lessons/csharp', $data,$category_id);	
 		} else {
-            /*$data['articles_info'] = $this->LessonsModel->get_csharp_articles();
-            $this->__show('Вот список занятий', 'lessons/csharp_main', $data, true);*/
-            $data['articles'] = $this->LessonsModel->get_articles_list(4);	
-			$data['controller_path'] = $this->LessonsModel->get_category(4)->controller;
-			$this->__show('Математическая логика', 'lessons/articles_list', $data, true);	     
+            $data['articles'] = $this->LessonsModel->get_articles_list($category_id);	
+			$data['controller_path'] = $this->LessonsModel->get_category($category_id)->controller;
+			$this->__show('Математическая логика', 'lessons/articles_list', $data, $category_id);	     
 		}
-		//$this->__show('Вопросы к колоквиуму', 'lessons/article');	
 	}
 }
 

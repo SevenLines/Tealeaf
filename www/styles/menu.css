@@ -22,7 +22,7 @@ float: left;
 position: relative; 
 border-right: 1px solid #ccc; 
 text-align: center;
-max-width:150px;
+
 }
 
 .menu li a{ 
@@ -54,14 +54,14 @@ max-width:150px;
 	border-right:1px solid #CCC;
 	margin: -1px;
 	background:#EEE;
-	width:132px;
+	width:136px;
 }
 
 .menu a:hover { 
 background:#FAFDFA;
 }
 
-.menu a.current{ 
+.menu  a.active{ 
 	background-color: #FAFDFA; 
 	color:black;
 }

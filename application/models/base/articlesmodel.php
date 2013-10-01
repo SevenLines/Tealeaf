@@ -95,8 +95,11 @@ class ArticlesModel extends CI_Model {
 	
 	function get_articles_list($category_id)
 	{
-		$sql = "SELECT * FROM articles WHERE category_id = $category_id ORDER BY ord, id_";
-		$query = $this->db->query($sql, $category_id);
+		$sql = "SELECT * 
+				FROM articles 
+				WHERE category_id = $category_id and enabled = 1 
+				ORDER BY ord, id_";
+		$query = $this->db->query($sql);
 		return $query->result();
 	}
 	
@@ -113,10 +116,11 @@ class ArticlesModel extends CI_Model {
 	 * [i][0] - name  
 	 * [i][1] - path
 	 * [i][2] - childs_articles
+	 * [i][3] - actve, True if active
 	 * [i][2][0] - article_name
 	 * [i][2][1] - article_id
 	 * */
-	function get_menu_array()
+	function get_menu_array($active_category_id=0)
 	{
 		$out = array();
 		$categories = $this->get_child_categories();
@@ -129,6 +133,7 @@ class ArticlesModel extends CI_Model {
 				$art[1] = $article->id_;
 				$item[2][] = $art;	
 			}
+			$item[3] = $active_category_id == $ctg->id_;
 			$out[] = $item;	
 		}
 		//ArticlesModel::log_var($out);
