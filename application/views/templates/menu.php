@@ -1,12 +1,23 @@
 <div class="mainmenu">
- <ul class="menu">
-   <li >
-   <?php if(isset($selected) && $selected) { ?>
-   	<a class="selected">Практикум по C#</a>    
-   <?php } else { ?>
-   	<a href="<?php echo site_url();?>/lessons/csharp">Практикум по C#</a> 
-   <?php } ?>
-  </li>	
- </ul>
+	<ul class="menu">
+		<?php if (isset($menu)) { ?>
+			<?php foreach ($menu as $category) {?>
+		   		<li>
+		   			<a href="<?php echo site_url().'/'.$category[1]; ?>">
+		   				<?php echo $category[0]?>
+		   			</a>
+					<ul>
+						<?php foreach ($category[2] as $article) {?>
+		   					<li>
+		   						<a href="<?php echo site_url().'/'.$category[1].'/'.$article[1]; ?>">
+					   				<?php echo $article[0]?>
+					   			</a>
+		   					</li>
+		   				<?php } ?>
+					</ul>
+		   		</li>
+			<?php } ?>	
+		<?php } ?>
+	</ul>
 </div>
 <div class="clear"></div>

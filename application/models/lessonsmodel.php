@@ -16,4 +16,5 @@ class LessonsModel extends ArticlesModel {
         return $this->get_articles_info_for_category($csharp_article);
     }
     
+	
 }

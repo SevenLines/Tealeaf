@@ -147,6 +147,17 @@ a:hover {
 	clear:both;
 }
 
-
-
+.trace {
+	display: black;
+	width: 300;
+	height: auto;
+	padding: 2em;
+	float:left;
+	margin: 1em;
+	border-radius: 16px 0 0 0;
+	border: 2px solid gray;
+	z-index: 100;
+	background-color: Orange;
+	overflow: scroll;
+}
                  
