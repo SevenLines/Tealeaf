@@ -126,10 +126,10 @@ class ArticlesModel extends CI_Model {
 		$categories = $this->get_child_categories();
 		foreach ($categories as $ctg) {
 			$item = array();
-			$item[0] = $ctg->name;
+			$item[0] = $ctg->title_menu;
 			$item[1] = $ctg->controller;
 			foreach($this->get_articles_list($ctg->id_) as $article) {
-				$art[0] = $article->name;
+				$art[0] = $article->title_menu;
 				$art[1] = $article->id_;
 				$item[2][] = $art;	
 			}

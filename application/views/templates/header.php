@@ -11,7 +11,7 @@
 <script type="text/javascript" src="scripts/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/main.js"></script>
 <meta charset="utf-8">
-<title><?php echo $title; ?></title>
+<title><?php echo $title_page; ?></title>
 </head>
 <body>
 <div class="wrapper">

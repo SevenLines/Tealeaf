@@ -29,6 +29,7 @@ a:hover {
 	margin: 0 auto;
 	margin-bottom: 10em;
 	max-width: 1000px;
+	min-width: 353;
 	background-color: #FAFDFA;
 	border: solid 2px #003366; 
 	border-top:none;
