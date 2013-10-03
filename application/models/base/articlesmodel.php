@@ -111,7 +111,9 @@ class ArticlesModel extends CI_Model {
 		return $query -> row();
 	}
 	
-	/* return menu as array
+	/* return active category info and menu as array
+	 * 
+	 * use like (menu_array, index_of_active_category_in_current_array) = get_menu_array(100500);
 	 * 
 	 * [i][0] - name  
 	 * [i][1] - path
@@ -123,21 +125,32 @@ class ArticlesModel extends CI_Model {
 	function get_menu_array($active_category_id=0)
 	{
 		$out = array();
+		$index = -1;
 		$categories = $this->get_child_categories();
-		foreach ($categories as $ctg) {
+		$count = count($categories);
+		for( $i=0;$i<$count; ++$i ) {
+			$ctg = $categories[$i];
 			$item = array();
-			$item[0] = $ctg->title_menu;
-			$item[1] = $ctg->controller;
+			$item['title_menu'] = $ctg->title_menu;
+			$item['controller'] = $ctg->controller;
 			foreach($this->get_articles_list($ctg->id_) as $article) {
-				$art[0] = $article->title_menu;
-				$art[1] = $article->id_;
-				$item[2][] = $art;	
+				$art['title_menu'] = $article->title_menu;
+				$art['id'] = $article->id_;
+				$item['articles'][] = $art;	
 			}
-			$item[3] = $active_category_id == $ctg->id_;
+			
+			// third index used to define is item active
+			$item['active'] = false;
+			if ( $active_category_id == $ctg->id_ ) {
+				$item['active'] = true;
+				$index = $i;
+			}
+			
+			$item['title'] = $ctg->title;
+			
 			$out[] = $item;	
 		}
-		//ArticlesModel::log_var($out);
-		return $out;
+		return array($out, $index);
 	} 
 	 
 	

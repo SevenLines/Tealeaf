@@ -5,17 +5,17 @@
 		<?php if (isset($menu)) { ?>
 			<?php foreach ($menu as $category) {?>
 		   		<li>
-		   			<a href="<?php echo site_url().'/'.$category[1]; ?>" 
-		   			<?php if(isset($category[3]) && $category[3]) echo 'class="active"'?>
+		   			<a href="<?php echo site_url().'/'.$category['controller']; ?>" 
+		   			<?php if(isset($category['active']) && $category['active']) echo 'class="active"'?>
 		   			>
-		   				<?php echo $category[0]?>
+		   				<?php echo $category['title_menu']?>
 		   			</a>
-					<?php if (isset($category[2])) { ?>
+					<?php if (isset($category['articles'])) { ?>
 					<ul>
-						<?php foreach ($category[2] as $article) {?>
+						<?php foreach ($category['articles'] as $article) {?>
 		   					<li>
-		   						<a href="<?php echo site_url().'/'.$category[1].'/'.$article[1]; ?>">
-					   				<?php echo $article[0]?>
+		   						<a href="<?php echo site_url().'/'.$category['controller'].'/'.$article['id']; ?>">
+					   				<?php echo $article['title_menu']?>
 					   			</a>
 		   					</li>
 		   				<?php } ?>
@@ -27,3 +27,4 @@
 	</ul>
 </div>
 <div class="clear"></div>
+<div class="breadcrumbs"><?php if (isset($breadcrumbs)) echo $breadcrumbs; ?></div>

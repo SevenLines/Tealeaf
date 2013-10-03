@@ -35,27 +35,38 @@ class Lessons extends CI_Controller {
 	}
 	
 
-	public function __showMenu($data=array(), $category_id)
+	public function __showMenu($data=array(), $category_id, $show_breadcrumbs=false)
 	{
-		//$data['menu'] = $this->LessonsModel->get_categories_tree();
-		$data['menu'] = $this->LessonsModel->get_menu_array($category_id);
+		list($data['menu'], $active_index) = $this->LessonsModel->get_menu_array($category_id);
+		
+		if ( $show_breadcrumbs ) {
+			$data['breadcrumbs'] = $data['menu'][$active_index]['title'];
+		}
+		
 		$this->load->view('templates/menu', $data);
 	} 
 
-	private function __show($title_page, $title, $viewName, $data=array(), $category_id=0) 
+	/*used to show default article with title and text*/
+	private function __show($title_page,
+							$title,
+							$viewName, 
+							$data=array(), 
+							$category_id=0,
+							$show_breadcrumbs=false) 
 	{
-        $data['title_page'] = $title_page;
 		$data['title'] = $title;
+		$data['title_page'] = $title_page;
 		$data['mail'] = $this->mymail;
         
 		$this->load->view('templates/header', $data);
-		$this->__showMenu($data, $category_id);
+		$this->__showMenu($data, $category_id, $show_breadcrumbs);
 		if (isset ($viewName)) {
         	$this->load->view($viewName, $data);
         }
 		$this->load->view('templates/footer', $data);
 	}
 	
+	/* used to show articles list of the selected category */
 	private function __show_articles_list($category_id)
 	{
 	    $category = $this->LessonsModel->get_category($category_id);
@@ -63,33 +74,37 @@ class Lessons extends CI_Controller {
 		$data['controller_path'] = $category->controller;
 		$this->__show($category->title,
 					  $category->title,
-					  'lessons/articles_list', $data, $category_id);			
+					  'lessons/articles_list',
+					  $data, 
+					  $category_id);			
+	}
+	
+	/* show article for current category*/
+	private function __show_article($page = 0, $category_id = 2) 
+	{
+		if ( isset($page) && $page != 0 ) {		
+            $data['articles_info'] = $this->LessonsModel->get_article($page);
+            $this->__show($data['articles_info']->title_page,
+            			  $data['articles_info']->title,
+            			 'lessons/article_syntax', 
+            			 $data, 
+            			 $category_id,
+						 true);	
+		} else {
+            $this->__show_articles_list($category_id);     
+		}			
 	}
 
 	public function csharp($page = 0) 
 	{
 		$category_id = 2;			
-		if ( isset($page) && $page != 0 ) {		
-            $data['articles_info'] = $this->LessonsModel->get_article($page);
-            $this->__show($data['articles_info']->title_page,
-            			  $data['articles_info']->title,
-            			 'lessons/article_syntax', $data, $category_id);	
-		} else {
-            $this->__show_articles_list($category_id);     
-		}		
+		$this->__show_article($page, $category_id);
 	} 
 	
 	public function mlogic($page=0)
 	{
 		$category_id = 4;	
-		if ( isset($page) && $page != 0 ) {		
-            $data['articles_info'] = $this->LessonsModel->get_article($page);
-            $this->__show($data['articles_info']->title_page,
-            			  $data['articles_info']->title,
-            			  'lessons/article_syntax', $data,$category_id);	
-		} else {
-     		$this->__show_articles_list($category_id);
-		}
+		$this->__show_article($page, $category_id);
 	}
 	
 	public function __showMainPage()
