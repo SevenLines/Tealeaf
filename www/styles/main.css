@@ -17,6 +17,22 @@ h1 {
 	color: #003366;
 }
 
+
+h2 {
+	margin: 0;
+	padding:0;
+	margin-top:0.5em;
+	font-weight: normal;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: #003366;
+}
+
+h3 {
+	margin:0;
+	margin-top:0.5em;
+}
+
+
 a {
 	color: #00AEEF;
 }
@@ -163,15 +179,72 @@ a:hover {
 }
 
 .footer {
-	height:12px;
-	margin-top:1em;
-	background-color: #003366;
+	height:0;
+	margin-top:0;
 }
 
+hr {
+	color: #003366;
+}
 
 .breadcrumbs {
-	padding-left:2.6em;
+	padding-left:2.7em;
 	font-size: 0.8em;
+	color: #003366;
 }
+
+.lab .title {
+	margin-bottom: 0.3em;	
+}
+
+.lab .title a {
+	color: #003366;
+	cursor: pointer;
+	border-bottom:dashed 1px;
+}
+
+.lab .title a:hover {
+	color: #FF7700;
+}
+
+.lab .info {
+
+}
+
+.tasks {
+	padding-left:2em;
+}
+
+.tasks li {
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border-radius: 10px;
+	background: #EEEEEE;
+	border:silver 1px solid;
+}
+
+.tasks li.easy,
+.tasks li.medium,
+.tasks li.hard,
+.tasks li.nightmare {
+	border:gray 1px solid;
+}
+
+.tasks li.easy {
+	background-color: #88DD22;
+}
+
+.tasks li.medium {
+	background-color: #DDDD22;
+}
+
+.tasks li.hard {
+	background-color: #DD8822;
+}
+
+.tasks li.nightmare {
+	background-color: #DD2200;
+}
+            
 
                  

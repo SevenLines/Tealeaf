@@ -1,5 +1,6 @@
 <?php echo PHP_EOL;?>
 <div class="content">
+<hr>
 <h1><?php echo $title;?></h1>
 <hr>
 <div class="plain_text">
