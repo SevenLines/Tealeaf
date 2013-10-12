@@ -245,36 +245,6 @@ hr {
 .tasks li.nightmare {
 	background-color: #DD2200;
 }
-
-.regex {
-	border: 1px solid gray;
-	padding: 0.5em;
-	margin: 1em; 
-	border-radius: 8px;
-	background-color: #EEE;
-}       				
-
-.regex dt {
-	font-size:1.5em;
-	color: #08E;
-	
-}
-
-.regex dt:before {
-}
-
-.regex dd {
-	margin-left:0;
-	margin-top: 0.5em;
-}
-.regex dd b {
-	background-color: yellow;
-	font-weight: normal;;
-}
-.regex dd i{
-	background-color: #BF0;
-	font-style: normal;	
-}
             
 
                  

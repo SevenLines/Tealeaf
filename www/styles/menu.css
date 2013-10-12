@@ -40,6 +40,7 @@
 
 .menu li a{ 
 	padding:0.8em 1em; 
+	text-align:left;
 	height:17px;
 	display: block; 
 	color: #00AEEF;
@@ -58,7 +59,7 @@
 }
 
 .menu ul li a { 
-	padding:4px 8px; 
+	padding:8px 8px; 
 	height:auto;
 	display: block; 
 	color: #00AEEF;
@@ -67,7 +68,7 @@
 	border-right:1px solid #CCC;
 	margin: -1px;
 	background:#EEE;
-	width:9em;
+	width:14em;
 }
 
 .menu a:hover { 
