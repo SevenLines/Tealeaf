@@ -8,7 +8,7 @@
 		$(this).next().slideToggle();
 	});
 	
-    $('.menu li').hover(
+    $('.nav>ul>li').hover(
 		function () {
 			//show its submenu
 			$('ul', this).stop().slideDown(100);
