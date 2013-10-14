@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Lessons extends CI_Controller {
+class Page_base extends CI_Controller {
 	var $mymail = "mmailm.math@mail.ru";
 	/**
 	 * Index Page for this controller.
@@ -22,18 +22,6 @@ class Lessons extends CI_Controller {
         parent::__construct();
         $this->load->model('LessonsModel');
     }
-    
-	/*Called when no paramters set for constructor*/
-	public function index($page=null)
-	{
-		$this->__showMainPage();
-	}
-	
-	public function inside()
-	{
-		$this->load->view('static/inside');
-	}
-	
 
 	public function __showMenu($data=array(), $category_id, $show_breadcrumbs=false)
 	{
@@ -47,7 +35,7 @@ class Lessons extends CI_Controller {
 	} 
 
 	/*used to show default article with title and text*/
-	private function __show($title_page,
+	public function __show($title_page,
 							$title,
 							$viewName, 
 							$data=array(), 
@@ -67,7 +55,7 @@ class Lessons extends CI_Controller {
 	}
 	
 	/* used to show articles list of the selected category */
-	private function __show_articles_list($category_id)
+	public function __show_articles_list($category_id)
 	{
 	    $category = $this->LessonsModel->get_category($category_id);
 	    $data['articles'] = $this->LessonsModel->get_articles_list($category_id);	
@@ -80,7 +68,7 @@ class Lessons extends CI_Controller {
 	}
 	
 	/* show article for current category*/
-	private function __show_article($page = 0, $category_id = 2) 
+	public function __show_article($page = 0, $category_id = 2) 
 	{
 		if ( isset($page) && $page != 0 ) {		
             $data['articles_info'] = $this->LessonsModel->get_article($page);
@@ -90,23 +78,11 @@ class Lessons extends CI_Controller {
             			 $data, 
             			 $category_id,
 						 true);	
-		} else {
+		} else {			
             $this->__show_articles_list($category_id);     
 		}			
 	}
 
-	public function csharp($page = 0) 
-	{
-		$category_id = 2;			
-		$this->__show_article($page, $category_id);
-	} 
-	
-	public function mlogic($page=0)
-	{
-		$category_id = 4;	
-		$this->__show_article($page, $category_id);
-	}
-	
 	public function __showMainPage()
 	{
 		$category_id = 9;
@@ -117,6 +93,11 @@ class Lessons extends CI_Controller {
 					  $articles_info->title,
 					  "article", $data, $category_id);		
 	}
+
+	
+
+	
+
 }
 
 /* End of file welcome.php */

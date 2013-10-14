@@ -38,8 +38,12 @@
 |
 */
 
-$route['default_controller'] = "lessons";
+
+$route['default_controller'] = "main";
 $route['404_override'] = '';
+
+$route['lessons/csharp/(:num)'] = "lessons/csharp/index/$1";
+$route['lessons/mlogic/(:num)'] = "lessons/mlogic/index/$1";
 
 
 /* End of file routes.php */
