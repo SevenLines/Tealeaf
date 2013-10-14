@@ -1,7 +1,3 @@
-<?php echo PHP_EOL;?>
-<div class="content">
-<h1><?php echo $title;?></h1>
-<hr>
 <ul class="lessons_list">
 <?php foreach($categories as $category) { ?>
    	<li>
@@ -10,4 +6,3 @@
 <?php } ?>
 </ul>
 <div class="clear"></div>
-</div>

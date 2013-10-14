@@ -1,7 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Page_base extends CI_Controller {
+class Base_page extends CI_Controller {
 	var $mymail = "mmailm.math@mail.ru";
+	var $base_view = 'base_page';
 	/**
 	 * Index Page for this controller.
 	 *
@@ -23,7 +24,8 @@ class Page_base extends CI_Controller {
         $this->load->model('LessonsModel');
     }
 
-	public function __showMenu($data=array(), $category_id, $show_breadcrumbs=false)
+	// fill data array with menu items
+	public function __fillMenuData(&$data, $category_id, $show_breadcrumbs=false)
 	{
 		list($data['menu'], $active_index) = $this->LessonsModel->get_menu_array($category_id);
 		
@@ -31,7 +33,7 @@ class Page_base extends CI_Controller {
 			$data['breadcrumbs'] = $data['menu'][$active_index]['title'];
 		}
 		
-		$this->load->view('templates/menu', $data);
+		//$this->load->view('templates/menu', $data);
 	} 
 
 	/*used to show default article with title and text*/
@@ -45,13 +47,14 @@ class Page_base extends CI_Controller {
 		$data['title'] = $title;
 		$data['title_page'] = $title_page;
 		$data['mail'] = $this->mymail;
-        
-		$this->load->view('templates/header', $data);
-		$this->__showMenu($data, $category_id, $show_breadcrumbs);
+
+		$this->__fillMenuData($data, $category_id, $show_breadcrumbs);
 		if (isset ($viewName)) {
-        	$this->load->view($viewName, $data);
+        	if ($viewName != $this->base_view) {
+        		$data['subview'] = $viewName;
+			} 	
         }
-		$this->load->view('templates/footer', $data);
+		$this->load->view($this->base_view, $data);
 	}
 	
 	/* used to show articles list of the selected category */
@@ -91,7 +94,7 @@ class Page_base extends CI_Controller {
 		
 		$this->__show($articles_info->title_page,
 					  $articles_info->title,
-					  "article", $data, $category_id);		
+					  "templates/plain_text", $data, $category_id);		
 	}
 
 	

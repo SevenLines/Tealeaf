@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-include_once 'application/controllers/page_base.php'; // include_once '../page_base.php';
+include_once 'application/controllers/base_page.php';// include_once '../page_base.php';
 
-class Main extends Page_base {
+class Main extends Base_page {
 
     function __construct()
     {

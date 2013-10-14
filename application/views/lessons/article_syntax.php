@@ -1,11 +1,12 @@
-<?php echo PHP_EOL;?>
-<div class="content">
-<h1><?php echo $title;?></h1>
+<!-- SCRIPTS FOR TEXT HIGHLIGHTING -->
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<script type="text/javascript" src="scripts/shBrushCSharp.js"></script>
 <script type="text/javascript">
      SyntaxHighlighter.all()
 </script>
-<hr>
-<div class="plain_text">
-<?php echo $articles_info->text; ?>
-</div>
-</div>
+<!-- SCRIPTS END -->
+<link rel="stylesheet" type="text/css" href="styles/shCore.css">
+<link rel="stylesheet" type="text/css" href="styles/shThemeDefault.css">
+<?php 
+	include 'article.php'; // using articles from lessons
+?>

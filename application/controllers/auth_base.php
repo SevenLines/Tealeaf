@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Auth_base extends CI_Controller {
+include_once 'application/controllers/base_page.php';
+
+class Auth_base extends Base_page {
 	
 	function __construct()
     {
@@ -18,8 +20,8 @@ class Auth_base extends CI_Controller {
 		}
 		
 		if ($redirect) {
-			$this->session->set_flashdata('refer', current_url()); 
-			redirect('/login?last='.current_url(), 'refresh');
+			$this->session->set_userdata('refer', current_url()); 
+			redirect('/login', 'refresh');
 		}
 		
 		return false;
@@ -27,6 +29,7 @@ class Auth_base extends CI_Controller {
 	
 	function index() {
 		$this->__check_logged();
+		$this->__showMainPage();
 	}
 	
 	

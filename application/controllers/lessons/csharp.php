@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-include 'application/controllers/page_base.php'; // include_once '../page_base.php';
+include_once 'application/controllers/base_page.php'; // include_once '../page_base.php';
 
-class Csharp extends Page_base {
+class Csharp extends Base_page {
 	
 	function __construct()
     {
