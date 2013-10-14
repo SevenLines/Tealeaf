@@ -2,8 +2,9 @@
 
 .nav {
 	float:left;
+	font-size:1em;
 	width:100%;
-	background:#DDD;
+	background:#EEE;
 	border-bottom: 1px solid #ccc;  	
 	margin-bottom: 10px;
 }
@@ -24,7 +25,6 @@
 }
 
 .nav>ul {
-	font-size:1em;
 	list-style: none;
 	padding-left:0;
 	margin:0;
@@ -42,7 +42,7 @@
 	padding:0.8em 1em; 
 	text-align:left;
 	display: block; 
-	color: #00AEEF;
+	color: #FF7700;
 }
 
 .nav>ul ul { 
@@ -55,7 +55,7 @@
 	 list-style:none;
 	 position:absolute;
 	 
-	 width:10em;
+	 width:160px;
 	 font-size:0.9em;
 	 
 	 box-shadow:0px 2px 2px gray;
@@ -65,13 +65,14 @@
 
 .nav>ul ul li {
 	border-top:1px solid #ccc;	
+	font-size: 12px;
 }
 
 
 .nav>ul ul li a { 
 	padding:8px 8px; 
 	display: block; 
-	color: #00AEEF;
+	color: #FF7700;
 }
 
 .nav>ul a:hover { 
@@ -84,7 +85,7 @@
 }
 
 .nav>ul a:hover {
-	color: #FF7700;
+	color: #EF00AE;
 }
 
 
