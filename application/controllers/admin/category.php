@@ -17,7 +17,7 @@ class Category extends Auth_base {
 		$data['category2'] = $this->ArticlesModel->get_category($category_id);
 		$data['articles'] = $this->ArticlesModel->get_articles_list($category_id, -1);
 		$data['breadcrumbs'] = '<a href="'.site_url().'/admin/categories"><< к выбору категорий</a>';
-		$this->__show("manager", "Категория #".$category_id.'', "manager/category",$data);
+		$this->__show("manager", "«{$data['category2']->title}» id: $category_id", "manager/category",$data);
 	}	
 	
 	function update($category_id=null) {

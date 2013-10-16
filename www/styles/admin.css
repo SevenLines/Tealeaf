@@ -10,29 +10,26 @@
 }
 
 .categories td, th {
-	padding: 0.25em 1em;
+	padding: 0.1em 0.5em;
 	margin-left: 0;
 	padding-left:0;
 }
 
+.categories th {
+	border-bottom: solid 1px gray;
+}
+
 .categories input[type=text] {
 	width:100%;
-
 }
 
 .category {
 	padding:0;
 	float:left;
 	display:block;
-	width:60%;
+	width:49%;
 	margin:0;	
 	clear: none;
-}
-
-.category label, 
-.article label{
-	display:block;
-	margin-top:0.25em;
 }
 
 .category input[type=text], 
@@ -57,11 +54,8 @@
 .article_list {
 	float:right;
 	display:block;
-	background-color:#EFEFEF;
-	border: solid 2px silver;
-	border-radius:8px;
 	padding-left:1em;
-	width:35%;
+	width:45%;
 	clear: none;
 }
 
@@ -72,4 +66,23 @@
 
 .article_list h2 {
 	margin-bottom:0;
+}
+
+.article_list .show {
+	color: green;
+}
+.article_list .hide {
+	color: red;
+}
+
+.article_list .show:hover {
+	color: red;
+}
+.article_list .hide:hover {
+	color:green;	
+}
+
+
+.edited {
+	background-color: #DFD;
 }

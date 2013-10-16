@@ -45,9 +45,11 @@ $route['404_override'] = '';
 $route['lessons/csharp/(:num)'] = "lessons/csharp/index/$1";
 $route['lessons/mlogic/(:num)'] = "lessons/mlogic/index/$1";
 $route['admin'] = "admin/categories";
+
 //$route['admin/categories/edit/(:num)'] = "admin/categories/edit/$1";
 $route['admin/category/(:num)'] = "admin/category/index/$1";
 $route['admin/article/(:num)'] = "admin/article/index/$1";
+$route['admin/preview/(:num)'] = "admin/preview/index/$1";
 
 
 /* End of file routes.php */

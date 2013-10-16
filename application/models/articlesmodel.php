@@ -64,8 +64,8 @@ class ArticlesModel extends CI_Model {
 	function get_articles_list($category_id, $enabled = 1)
 	{
 		$sql = "SELECT * 
-				FROM articles 
-				WHERE category_id = $category_id and ($enabled=-1 or enabled = $enabled) 
+				FROM articles 	
+				WHERE ($category_id is NULL or category_id = $category_id) and ($enabled=-1 or enabled = $enabled) 
 				ORDER BY ord, id_";
 		$query = $this->db->query($sql);
 		return $query->result();
@@ -95,10 +95,54 @@ class ArticlesModel extends CI_Model {
 		return $query -> row();
 	}
 	
+	function delete_article($article_id) {
+		$this->db->where('id_', $article_id);
+		$this->db->delete($this->articles_table	);
+	}
+	
 	function update_article($article_id, $data) {
 		$this->db->where('id_', $article_id);
 		$this->db->update($this->articles_table, $data);		
 	}
+	
+	function add_article($data) {
+		$this->db->select_max('ord');
+		$this->db->where('category_id', $data['category_id']);
+		$query = $this->db->get($this->articles_table);
+		$max_ord = $query->row()->ord;
+		$data['ord'] = $max_ord + 1;
+		
+		$this->db->insert($this->articles_table, $data);
+		return $this->db->insert_id();
+	} 
+
+	// set article's order to new order value, and shift another items if neccessary
+	function set_order($article_id, $category_id,  $old_ord, $new_ord) {
+		// generate script for move items
+		if ($old_ord > $new_ord) {
+			$sql = <<<SQL
+			UPDATE {$this->articles_table}
+			SET ord = ord + 1
+			WHERE (ord BETWEEN $new_ord and $old_ord-1) and category_id = $category_id;
+SQL;
+		} else if ($old_ord < $new_ord ) {
+			$sql = <<<SQL
+			UPDATE {$this->articles_table}
+			SET ord = ord - 1
+			WHERE (ord BETWEEN $old_ord and $new_ord) and category_id = $category_id;
+SQL;
+		} else {
+			return false;
+		}
+		// shift other items, if any shift required
+		$this->db->query($sql);
+		
+		// update current article order value to $new_ord
+		$this->db->where('id_', $article_id);
+		$this->db->update($this->articles_table, array('ord' => $new_ord));
+		return true;
+	}
+	
 	
 	/* return active category info and menu as array
 	 * 
@@ -114,7 +158,7 @@ class ArticlesModel extends CI_Model {
 	function get_menu_array($active_category_id=0)
 	{
 		$out = array();
-		$index = -1;
+		$index = 0;
 		$categories = $this->get_child_categories();
 		$count = count($categories);
 		for( $i=0;$i<$count; ++$i ) {
@@ -130,7 +174,7 @@ class ArticlesModel extends CI_Model {
 			
 			// third index used to define is item active
 			$item['active'] = false;
-			if ( $active_category_id == $ctg->id_ ) {
+			if ( isset($active_category_id) && $active_category_id == $ctg->id_ ) {
 				$item['active'] = true;
 				$index = $i;
 			}

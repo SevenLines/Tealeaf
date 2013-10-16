@@ -8,6 +8,7 @@ class Auth_base extends Base_page {
     {
         parent::__construct();
 		$this->load->helper('url'); // for redirecting
+		$this->load->helper('cookie'); // for limit frequency of entering
 		$this->__check_logged();
     }
 	

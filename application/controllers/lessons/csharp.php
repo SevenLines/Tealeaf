@@ -7,6 +7,7 @@ class Csharp extends Base_page {
 	function __construct()
     {
         parent::__construct();
+		$this->current_controller = 'lessons/csharp';
     }
 	
 	public function index($page=null)

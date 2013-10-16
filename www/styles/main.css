@@ -282,28 +282,8 @@ hr {
 }
 
 .login form label, .login form input {
-	display:block;
-}
-
-.login form input {
-	margin: 0.5em 0 ;
-	
-	border: solid gray 1px;
-	padding: 0.5em;
-}
-
-input[type=submit] {
-	background-color: #DDD;
-	border-radius: 8px;
-	cursor: pointer;
-	padding:0.5em;
-	border: solid 1px silver;
-	min-width: 60px;
-}
-
-input[type=submit]:hover {
-	background-color: #EF00AE;
-	color:white;
+	margin-right: 0.5em;
+	display: inline-block;
 }
 
 .login form label {

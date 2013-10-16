@@ -7,6 +7,7 @@ class Mlogic extends Base_page {
 	function __construct()
     {
         parent::__construct();
+		$this->current_controller = 'lessons/mlogic';
     }
 	
 	public function index($page=null)

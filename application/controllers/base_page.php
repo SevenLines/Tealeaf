@@ -4,6 +4,7 @@ class Base_page extends CI_Controller {
 	var $mymail = "mmailm.math@mail.ru";
 	var $base_view = 'base_page';
 	var $last_url = '';
+	var $current_controller = '';
 	var $rewrite_refer_url = TRUE; // TRUE means that every time u enter,  $this->session->set_userdata('refer', current_url()); called
 	/**
 	 * Index Page for this controller.
@@ -78,10 +79,19 @@ class Base_page extends CI_Controller {
 	}
 	
 	/* show article for current category*/
-	public function __show_article($page = 0, $category_id = 2) 
+	public function __show_article($page = 0, $category_id = null) 
 	{
 		if ( isset($page) && $page != 0 ) {		
             $data['articles_info'] = $this->ArticlesModel->get_article($page);
+			
+			
+			// check is category the same as the
+			if ( $data['articles_info']->category_id != $category_id || !$data['articles_info']->enabled) {
+				if (isset($category_id)) {
+					redirect("admin/preview/$page");
+				}
+			}
+            
             $this->__show($data['articles_info']->title_page,
             			  $data['articles_info']->title,
             			 'lessons/article_syntax', 
@@ -103,10 +113,6 @@ class Base_page extends CI_Controller {
 					  $articles_info->title,
 					  "templates/plain_text", $data, $category_id);		
 	}
-
-	
-
-	
 
 }
 
