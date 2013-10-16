@@ -1,5 +1,8 @@
 <div class="mail"> 
-	<script>"".contact('abc', 'htam.mliamm', 'mail.ru');</script></div>
+	<script>"".contact('abc', 'htam.mliamm', 'mail.ru');</script>
+	<span class='admin'><a href="">
+		
+	</a></span></div>
 <?php if (isset($menu)) { ?>
 <ul>	
 	<?php foreach ($menu as $category) {?>

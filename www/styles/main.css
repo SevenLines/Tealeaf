@@ -292,16 +292,18 @@ hr {
 	padding: 0.5em;
 }
 
-.login form input[type=submit] {
-	border: solid gray 1px;
-	background-color: silver;
-	width: 60px;
+input[type=submit] {
+	background-color: #DDD;
 	border-radius: 8px;
 	cursor: pointer;
+	padding:0.5em;
+	border: solid 1px silver;
+	min-width: 60px;
 }
 
-.login form input[type=submit]:hover {
+input[type=submit]:hover {
 	background-color: #EF00AE;
+	color:white;
 }
 
 .login form label {

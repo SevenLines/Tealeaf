@@ -1,10 +1,3 @@
-<?php echo PHP_EOL;?>
-<div class="content">
-<?php if( isset($title) && $title !== '' ) { ?>
-<h1><?php echo $title;?></h1>
-<hr>
-<?php } ?>
-
 <div class="login">
 <?php 
 if ( isset($logged) && $logged) {
@@ -19,6 +12,4 @@ if ( isset($logged) && $logged) {
 	echo form_close();	
 }
 ?>
-</div>
-
 </div>
