@@ -20,15 +20,15 @@ class Article extends Auth_base {
 		$category_name = $data['categories_list'][$data['article2']->category_id];
 		
 		$data['breadcrumbs'] = '<a href='.site_url().'/admin/category/'.$data['article2']->category_id.'>&lt;&lt; '.$category_name.'</a>';
-		$this->__show("Статья", "«{$data['article2']->title}» id: $article_id", "manager/article", $data);
+		$title = "«{$data['article2']->title}» id: $article_id"."<a style='float:right' target=blank href=".site_url()."/admin/preview/$article_id>посмотреть</a>";
+		$this->__show("Статья", $title, "manager/article", $data);
 	}	
 	
 	function update($article_id=null) {
 		$data = $this->input->post();
 		unset($data['submit']);
-		$data['enabled'] = isset($data['enabled'])?1:0;
 		$this->ArticlesModel->update_article($article_id, $data);
-		redirect($this->last_url);
+		redirect("admin/article/$article_id");
 	}
 	
 	function __get_categories_list($article_id) {

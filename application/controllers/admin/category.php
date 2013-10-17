@@ -28,5 +28,10 @@ class Category extends Auth_base {
 		redirect($this->last_url);
 	}
 	
+	function delete($category_id=null) {
+		//$this->ArticlesModel->delete_category($category_id);
+		redirect($this->last_url);
+	}
+	
 }
 

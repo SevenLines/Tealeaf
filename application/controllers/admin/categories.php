@@ -14,12 +14,7 @@ class Categories extends Auth_base {
 		$data['categories'] = $this->ArticlesModel->get_categories();
 		$this->__show("manager", "", "manager/categories",$data);
 	}	
-	
-	public function delete($category_id = null) {
-		$this->ArticlesModel->delete_category($category_id);
-		redirect('admin/'.$this->router->class);
-	}
-	
+
 	public function update($category_id = null) {
 		$data = $this->input->post();
 		unset($data['submit']); // remove button from data to update

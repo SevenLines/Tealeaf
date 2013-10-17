@@ -7,7 +7,7 @@ $(function() {
 </script>
 <div class='article'>
 <?php
-	echo form_open('admin/article/update/'.$article2->id_);
+	echo form_open("admin/article/update/$article2->id_");
 
 	echo form_dropdown('category_id', $categories_list, $article2->category_id);
 
@@ -19,8 +19,6 @@ $(function() {
 	
 	echo form_label('заголовок в меню', 'title_menu');
 	echo form_input('title_menu', $article2->title_menu);	
-	
-
 ?>
 
 <textarea name="text" style="min-width:100%;max-width:100%;height:300px;">

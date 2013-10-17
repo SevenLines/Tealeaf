@@ -21,7 +21,6 @@ class Login extends Base_page {
 		$get_password = $this->input->post('pass');
 		$logged = $this->session->userdata('logged');
 		
-		
 		if (!$this->input->cookie($this->secure_cookies_name)) {
 			if($get_password === $this->password) {	
 				$last_page = $this->session->userdata('refer');

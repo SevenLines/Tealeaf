@@ -25,11 +25,6 @@
 		$(".loginModal_overlay_bg").fadeToggle('fast');
 		return false;
 	});
-	
-	
-	
-	
-
 });
 
 // save content values

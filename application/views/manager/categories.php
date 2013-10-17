@@ -1,36 +1,87 @@
+<link rel='stylesheet'  href="styles/jquery-ui/smoothness/jquery-ui-1.10.3.custom.min.css" type="text/css">
 <link rel='stylesheet'  href="styles/admin.css" type="text/css">
-<table class="categories">
-<thead>
-<tr>
-	<th>Заголовок</th>
-	<th>Заголовок браузера</th>
-	<th>Заголовок в меню</th>
-</tr>
-</thead>
-<tbody>
-<?php foreach ($categories as $cat) { ?>
-<tr>
-<?php echo form_open('admin/categories/update/'.$cat->id_); ?>
-<td><?php echo form_input('title', $cat->title); ?></td>
-<td><?php echo form_input('title_page', $cat->title_page); ?></td>
-<td><?php echo form_input('title_menu', $cat->title_menu); ?></td>
-<td><?php echo form_submit('update', 'обновить'); ?></td>
-<?php echo form_close(); ?>
-	
-<?php echo form_open('admin/categories/edit/'.$cat->id_); ?>
-<td><?php echo form_submit('edit', 'изменить'); ?></td>
-<?php echo form_close(); ?>
-	
-<?php echo form_open('admin/categories/delete/'.$cat->id_); ?>
-<td><?php echo form_submit('delete', 'удалить'); ?></td>
-<?php echo form_close(); ?>
-</tr>
+<script type="text/javascript" src="scrpits/main"></script>
 
+<ul class="categories">
+<?php foreach ($categories as $cat) { ?>
+<li>
+<?php echo form_open('admin/categories/update/'.$cat->id_); ?>
+<?php echo form_input('title', $cat->title, 'title="заголовок"'); ?>
+<?php echo form_input('title_page', $cat->title_page, 'title="заголовок во вкладке браузера"'); ?>
+<?php echo form_input('title_menu', $cat->title_menu, 'title="заголовок в меню"'); ?>
+<?php echo form_submit('submit', 'submit', 'style="display:none;"'); ?>
+<a href="#" class="update">обновить</a>
+<a href="<?php echo site_url()."/admin/categories/edit/$cat->id_"; ?>" class="edit">изменить</a>		
+<a href="<?php echo site_url()."/admin/category/delete/$cat->id_"; ?>" class="delete">удалить</a>
+
+<?php echo form_close(); ?>
+</li>
 <?php } ?>
-</tbody>
-</table>
+</ul>
+
+<script type="text/javascript">
+	// reduce count of data to send
+	var formsCollection = document.getElementsByTagName("form");
+	for ( var i = 0; i < formsCollection.length; ++i ) {
+		submit_only_changed(formsCollection[i]);
+	}
+
+	$('.update').click(function() {
+	  	var submit = $(this).siblings("input[type=submit]")[0];
+	  	submit.click();
+	  	return false;
+	});
+</script>
+
+<!-- Сообщения -->
+<div id="delete_confirm" title="Удалить категорию?" style="display:none">
+  <p><span class="" style="float: left; margin: 0 7px 20px 0;"></span>Точно? Категорию не возможно будет восстановить! >_></p>
+</div>
+<!-- Конец сообщений -->
+<!-- Скрипты для сообщений -->
+<script type="text/javascript" src="scripts/jquery-ui.js"></script>
+<script type="text/javascript">
+	$('.delete').click(function() {
+		var a = this;
+		$("#delete_confirm" ).dialog({
+	      resizable: false,
+	      modal: true,
+	      show: {
+	        effect: "fade",
+	        duration: 300
+	      },
+	      hide: {
+	        effect: "fade",
+	        duration: 300
+	      },
+	      buttons: {
+	        "Удалить": function() {
+	          window.location = a.href;
+	        },
+	        "Отмена": function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	    });
+	    return false;
+  });
+	$( document ).tooltip( {
+		
+		show: {
+			effect: "fade",
+			duration: 300,
+		},
+		hide: {
+			effect: "fade",
+			duration: 0,
+		},
+	});	
+	$(".categories li:even").css("background-color","#F2F2F2");
+</script>
+<!-- Конец скриптов для сообщений -->
+
 <?php 
 	echo form_open('admin/categories/add');
-	echo form_submit('add', 'add');
+	echo form_submit('add', 'добавить категорию');
 	echo form_close();
 ?>

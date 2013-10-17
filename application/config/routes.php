@@ -49,7 +49,7 @@ $route['admin'] = "admin/categories";
 //$route['admin/categories/edit/(:num)'] = "admin/categories/edit/$1";
 $route['admin/category/(:num)'] = "admin/category/index/$1";
 $route['admin/article/(:num)'] = "admin/article/index/$1";
-$route['admin/preview/(:num)'] = "admin/preview/index/$1";
+$route['admin/preview/(:any)'] = "admin/preview/index/$1";
 
 
 /* End of file routes.php */
