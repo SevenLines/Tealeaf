@@ -9,9 +9,13 @@ class Preview extends Auth_base {
         parent::__construct();
     }
 
-	function index($article_id) {
+	function index($category_id, $article_id=null ) {
+		if ( !isset($article_id) ) {
+			$this->__show_articles_list($category_id);
+			return;
+		}
 		
-		$this->__show_article($article_id, null);
+		$this->__show_article($article_id, $category_id);
 	}	
 }
 

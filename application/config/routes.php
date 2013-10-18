@@ -39,17 +39,23 @@
 */
 
 
-$route['default_controller'] = "main";
+$route['default_controller'] = "page";
 $route['404_override'] = '';
 
-$route['lessons/csharp/(:num)'] = "lessons/csharp/index/$1";
-$route['lessons/mlogic/(:num)'] = "lessons/mlogic/index/$1";
+$route['page/(:num)']        = 'page/index/$1';
+$route['page/(:num)/(:num)'] = 'page/index/$1/$2';
+$route['page/(:num)/(:num)/(:any)'] = 'page/index/$1/$2/$3'; 
+$route['page/(:num)/(:any)'] = 'page/index/$1/$2'; 
+
 $route['admin'] = "admin/categories";
 
 //$route['admin/categories/edit/(:num)'] = "admin/categories/edit/$1";
 $route['admin/category/(:num)'] = "admin/category/index/$1";
+$route['admin/category/(:num)/(:any)'] = "admin/category/index/$1/$2";
 $route['admin/article/(:num)'] = "admin/article/index/$1";
-$route['admin/preview/(:any)'] = "admin/preview/index/$1";
+
+$route['admin/preview/(:num)'] = "admin/preview/index/$1";
+$route['admin/preview/(:num)/(:num)'] = "admin/preview/index/$1/$2";
 
 
 /* End of file routes.php */

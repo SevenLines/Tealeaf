@@ -4,6 +4,7 @@
 <?php include('templates/header.php'); ?>
 <!-- HEADER ENDS HERE -->
 <body>
+<?php include "templates/enter.php" ?>
 <div class="wrapper">
 	
 <!-- MENU STARTS HERE -->
@@ -24,9 +25,18 @@
 <!-- TITLE GOES HERE, IF ANY -->
 <?php if( isset($title) && $title !== '' ) { ?>
 <h1><?php echo $title;?></h1>
+<!-- DESCRIPTION GOES HERE, IF ANY -->
+<div class="description" ?>
+<?php if( isset($description) && $description !== '' ) { ?>
+<?php echo $description;?>
+<?php } ?>
+</div>
+<!-- DESCRIPTION ENDS HERE -->
 <hr>
 <?php } ?>
 <!-- TITLE ENDS HERE-->
+
+
 
 <!-- CONTENT STARTS HERE -->
 <?php if (isset($subview)) include($subview.'.php'); ?>

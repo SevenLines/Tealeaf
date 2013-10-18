@@ -6,6 +6,11 @@ class Base_page extends CI_Controller {
 	var $last_url = '';
 	var $current_controller = '';
 	var $rewrite_refer_url = TRUE; // TRUE means that every time u enter,  $this->session->set_userdata('refer', current_url()); called
+	var $flag = '';// some special flag
+	var $article_id = null;
+	var $status = '';
+	var $logged = '';
+	
 	/**
 	 * Index Page for this controller.
 	 *
@@ -27,6 +32,7 @@ class Base_page extends CI_Controller {
         $this->load->model('ArticlesModel'); // for using database model
 		$this->load->library('session'); // fore using CI session
 		$this->last_url = $this->session->userdata('refer');
+		$this->logged = $this->session->userdata('logged');
 		if ($this->rewrite_refer_url) {
 			$this->session->set_userdata('refer', current_url());
 		} 
@@ -35,27 +41,36 @@ class Base_page extends CI_Controller {
 	// fill data array with menu items
 	public function __fillMenuData(&$data, $category_id, $show_breadcrumbs=false)
 	{
+		
 		$menu = array();
+	
+		$data['top_article_info'] = $this->ArticlesModel->get_top_article_info();
 		list($data['menu'], $active_index) = $this->ArticlesModel->get_menu_array($category_id);
-
-		if ( $show_breadcrumbs ) {
+		if ( $show_breadcrumbs && $active_index != -1) {
 			$data['breadcrumbs'] = $data['menu'][$active_index]['title'];
 		}
 	} 
 
 	/*used to show default article with title and text*/
-	public function __show($title_page,
-							$title,
+	public function __show( $title,
+							$title_page,
+							$description,
 							$viewName, 
 							&$data, 
 							$category_id=0,
 							$show_breadcrumbs=false) 
 	{
 		$data['title'] = $title;
+		$data['description'] = $description;
 		$data['title_page'] = $title_page;
 		$data['mail'] = $this->mymail;
-
+		$data['logged'] = $this->session->userdata('logged');
+		$data['category_id'] = $category_id;
+		$data['article_id'] = $this->article_id;
+		$data['flag'] = $this->flag;
+		
 		$this->__fillMenuData($data, $category_id, $show_breadcrumbs);
+		
 		if (isset ($viewName)) {
         	if ($viewName != $this->base_view) {
         		$data['subview'] = $viewName;
@@ -69,50 +84,45 @@ class Base_page extends CI_Controller {
 	public function __show_articles_list($category_id)
 	{
 	    $category = $this->ArticlesModel->get_category($category_id);
-	    $data['articles'] = $this->ArticlesModel->get_articles_list($category_id);	
+		
+		if ( !$this->logged && !$category->enabled ) {
+			redirect("admin/preview/$category_id");
+		}
+		
+	    $data['articles'] = $this->ArticlesModel->get_articles_info_list($category_id);	
 		$data['controller_path'] = $category->controller;
 		$this->__show($category->title,
-					  $category->title,
+				      $category->title_page,
+					  $category->description,
 					  'lessons/articles_list',
 					  $data, 
 					  $category_id);			
 	}
 	
 	/* show article for current category*/
-	public function __show_article($page = 0, $category_id = null) 
+	public function __show_article($article_id = 0, $category_id = null) 
 	{
-		if ( isset($page) && $page != 0 ) {		
-            $data['articles_info'] = $this->ArticlesModel->get_article($page);
+		$this->article_id = $article_id;
 			
-			
-			// check is category the same as the
-			if ( $data['articles_info']->category_id != $category_id || !$data['articles_info']->enabled) {
-				if (isset($category_id)) {
-					redirect("admin/preview/$page");
-				}
+		if ( isset($article_id) && $article_id != 0 ) {  		
+            $data['articles_info'] = $this->ArticlesModel->get_article($article_id);
+
+			if ( !$this->logged && ($data['articles_info']->category_id != $category_id || !$data['articles_info']->enabled)) {
+				redirect("admin/preview/{$data['articles_info']->category_id}/$article_id");
 			}
-            
-            $this->__show($data['articles_info']->title_page,
-            			  $data['articles_info']->title,
+
+            $this->__show($data['articles_info']->title,
+            			  $data['articles_info']->title_page,
+            			  '',
             			 'lessons/article_syntax', 
             			 $data, 
             			 $category_id,
 						 true);	
-		} else {			
+		} else {		
             $this->__show_articles_list($category_id);     
 		}			
 	}
 
-	public function __showMainPage()
-	{
-		$category_id = 9;
-		$articles_info = $this->ArticlesModel->get_article(7);
-		$data['text'] = $articles_info->text;
-		
-		$this->__show($articles_info->title_page,
-					  $articles_info->title,
-					  "templates/plain_text", $data, $category_id);		
-	}
 
 }
 

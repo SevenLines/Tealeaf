@@ -46,11 +46,15 @@ a:hover {
 	margin-bottom: 10em;
 	max-width: 1000px;
 	min-width: 353;
-	background-color: #FAFDFA;
+	background-color: #FDFDFD;
 	border-top:none;
 	box-shadow:0px 0px 12px silver;
 	border-radius: 0 0 12px 12px;
 	padding: 0 0 1em;
+}
+
+.description {
+	font-size: 1.25em;
 }
 
 /*All what is below menu*/
@@ -192,6 +196,8 @@ hr {
 	color: #003366;
 }
 
+/* lab */
+
 .lab .title {
 	margin-bottom: 0.3em;	
 }
@@ -206,9 +212,9 @@ hr {
 	color: #FF7700;
 }
 
-.lab .info {
+/* lab */
 
-}
+/* tasks */
 
 .tasks {
 	padding-left:2em;
@@ -229,21 +235,14 @@ hr {
 	border:gray 1px solid;
 }
 
-.tasks li.easy {
-	background-color: #88DD22;
-}
+.tasks li.easy {background-color: #88DD22;}
+.tasks li.medium {	background-color: #DDDD22; }
+.tasks li.hard { background-color: #DD8822; }
+.tasks li.nightmare { background-color: #DD2200; }
 
-.tasks li.medium {
-	background-color: #DDDD22;
-}
+/* end tasks */
 
-.tasks li.hard {
-	background-color: #DD8822;
-}
-
-.tasks li.nightmare {
-	background-color: #DD2200;
-}
+/* regex */
 
 .regex {
 	border: 1px solid gray;
@@ -275,6 +274,10 @@ hr {
 	font-style: normal;	
 }
 
+/* regex */
+
+/* login */ 
+
 .login form {
 	display:block;
 	width: 400px;
@@ -289,6 +292,53 @@ hr {
 .login form label {
 	font-family: sans-serif;
 }
-            
+
+/* end login */
+
+/* admin */ 
+
+#admin {
+	padding:1em;
+	padding-top:0;
+	display:block;
+	float: right;
+	right: 0;
+	overflow: hidden;
+	position: fixed;
+}
+
+#admin #slider {
+	position:relative;
+	top: -1.55em;
+	border-radius: 0 0 8px 8px;	
+	background-color: #EEE;
+	border-top:0;
+	box-shadow: 0 0 4px 2px silver;
+}
+
+#admin #slider:hover{
+	box-shadow: 0 0 4px 2px orange;
+}
+
+#admin.fixed #slider {
+	top: 0;
+} 
+
+#admin a{
+	display:block;	
+	text-decoration: none;
+	font-size: 16px;
+	padding:8px;
+	border-bottom:groove gray 1px;
+	text-align:center;
+	padding-top:4px;
+}
+
+#admin a:last-child {
+	border-bottom:none;
+
+}
+
+/* admin info */
 
                  

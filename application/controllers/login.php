@@ -13,7 +13,6 @@ class Login extends Base_page {
         parent::__construct();		        
 		$this->load->helper('form');
 		$this->load->library('session'); // fore using CI session
-		//$this->__check_logged();
     }
 
 	function index() {
@@ -29,7 +28,7 @@ class Login extends Base_page {
 			}
 		}
 		$data['logged'] = $logged;
-		$this->__show("Вход в систему", "Вход в систему", "login",  $data);
+		$this->__show("Вход в систему", "Вход в систему", '', "login",  $data);
 		
 		$cookie = array('expire' => 3, 'name' => $this->secure_cookies_name, 'value'=>':P');
 		$this->input->set_cookie($cookie);
@@ -37,7 +36,7 @@ class Login extends Base_page {
 	
 	function logout() {
 		$this->session->set_userdata('logged', FALSE);
-		redirect('login');
+		redirect($this->last_url);
 	}
 	
 	
