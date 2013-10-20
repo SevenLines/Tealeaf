@@ -47,9 +47,11 @@ $route['page/(:num)/(:num)'] = 'page/index/$1/$2';
 $route['page/(:num)/(:num)/(:any)'] = 'page/index/$1/$2/$3'; 
 $route['page/(:num)/(:any)'] = 'page/index/$1/$2'; 
 
-$route['admin'] = "admin/categories";
+$route['admin'] = "admin/overview";
+$route['admin/visits'] = "admin/visits/index";
+$route['admin/visits/(:num)'] = "admin/visits/index/$1";
+$route['admin/visits/(:num)/(:num)'] = "admin/visits/index/$1/$2";
 
-//$route['admin/categories/edit/(:num)'] = "admin/categories/edit/$1";
 $route['admin/category/(:num)'] = "admin/category/index/$1";
 $route['admin/category/(:num)/(:any)'] = "admin/category/index/$1/$2";
 $route['admin/article/(:num)'] = "admin/article/index/$1";

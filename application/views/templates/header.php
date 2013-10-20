@@ -1,5 +1,5 @@
 <head>
-<base href="<?php echo base_url(); ?>/www/" />
+<base href="<?php echo base_url(); ?>www/" />
 
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="styles/menu.css">

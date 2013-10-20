@@ -248,7 +248,7 @@ SQL;
 			
 			$item['title'] = $ctg->title;
 			
-			$out[] = $item;	
+			$out[$i] = $item;	
 		}
 		return array($out, $index);
 	} 
