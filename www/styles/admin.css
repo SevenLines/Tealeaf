@@ -137,6 +137,7 @@
 	padding: 4px;
 	margin-bottom:0.75em;
 	box-sizing: border-box;
+	margin-top:0;
 }
 
 .article select {
@@ -145,11 +146,20 @@
 	display: block;
 }
 
+.article table {
+	padding:0;
+	margin:0;
+}
+
+.article table td{padding-right:1em;} 
+.article table td:last-child {padding-right:0;}
+
 label {
 	display:block;
 	color:gray;
 	float:left;
 	font-size:12px;
+	margin:0;
 	text-shadow: white 1px 1px 1px;
 	padding:3px 8px ; 	
 	background-color: #F2F2F2;

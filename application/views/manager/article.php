@@ -12,7 +12,7 @@ $(function() {
 	echo form_label('категория', 'category_id');
 	echo form_dropdown('category_id', $categories_list, $article2->category_id);
 ?>
-<table>
+<table >
 	<tr>
 		<td width="33%">
 			<?php
