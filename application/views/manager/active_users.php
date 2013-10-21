@@ -13,7 +13,7 @@
 				<?php echo $u->ip_address?>
 			</td>
 			<td>
-				<?php echo date('l jS \of F Y H:i A',$u->last_activity);?>
+				<?php echo date('H:i - d/m/Y',$u->last_activity);?>
 			</td>
 			<td>
 				<?php echo $u->user_agent ;?>

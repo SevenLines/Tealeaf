@@ -55,15 +55,17 @@
 	margin-right:16px;
 }
 
-.categories, .visits{
+.categories, .visits, .article-stat{
 	padding: 1em;
 	border: 1px dashed silver;
 	margin-top:0.5em;
+	overflow: hidden;
 }
 /* end categories_list specific */
 
 /* visits specific */
-.visits table {
+.visits table,
+.article-stat table {
 	width:100%;
 	text-align:center;
 	clear:both;
@@ -73,12 +75,15 @@
 }
 
 .visits td,
-.visits th{
+.visits th,
+.article-stat td,
+.article-stat th{
 	padding: 4px;
 	border: 1px solid silver;
 }
 
-.visits th {
+.visits th,
+.article-stat th  {
 	background-color: #EEE;
 	color:gray;
 	text-shadow: 1px 1px white;

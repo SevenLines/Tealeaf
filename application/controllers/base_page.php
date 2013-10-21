@@ -123,7 +123,11 @@ class Base_page extends CI_Controller {
 			if ( !$this->logged && ($data['articles_info']->category_id != $category_id || !$data['articles_info']->enabled)) {
 				redirect("admin/preview/{$data['articles_info']->category_id}/$article_id");
 			}
-
+			
+			# track visits only if user is not admin
+			if(!$this->logged)
+				$this->ArticlesModel->inc_article_visit($article_id);
+			
             $this->__show($data['articles_info']->title,
             			  $data['articles_info']->title_page,
             			  '',

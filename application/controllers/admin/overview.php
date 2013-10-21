@@ -28,6 +28,7 @@ class Overview extends Admin_base {
 		$data['categories'] = $this->ArticlesModel->get_categories();
 		$data['active_users'] = $this->VisitorsModel->get_current_visitors();
 		$data['visitors'] = $this->StatsModel->get_last_visitiors(0,20);
+		$data['articles_stat'] = $this->ArticlesModel->get_most_visited_articles_info();
 		$data['ords'] = $this->__get_select_ord($data['categories']);
 		$this->__show("", "manager", "", "manager/overview",$data);
 	}	

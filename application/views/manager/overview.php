@@ -53,6 +53,11 @@
 </div>
 <!-- END LAST VISITS INFO -->
 
+<!-- ARTICLES STATISTICS INFO -->
+<div class="article-stat" ?>
+<?php include 'article-stat.php' ?>
+</div>
+<!-- END OF ARTICLES STATISTICS INFO -->
 
 <script type="text/javascript">
 	// reduce count of data to send

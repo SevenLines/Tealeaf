@@ -4,7 +4,7 @@ class ArticlesModel extends CI_Model {
 
 	var $categories_table = 'categories';
 	var $articles_table = 'articles';
-	var $article_info_fields = 'id_, title, title_menu, title_page, description, category_id, enabled, ord, top';
+	var $article_info_fields = 'id_, title, title_menu, title_page, description, category_id, enabled, ord, top, date_create, date_update, visits';
 
 	function __construct() {
 		parent::__construct();
@@ -159,6 +159,7 @@ SQL;
 		if ( isset($data['category_id']) && $data['category_id'] == 0) {
 			$data['category_id'] = NULL;
 		}
+		$data['date_update'] = time();
 		$this->db->where('id_', $article_id);
 		$this->db->update($this->articles_table, $data);		
 	}
@@ -171,9 +172,14 @@ SQL;
 		$query = $this->db->get($this->articles_table);
 		$max_ord = $query->row()->ord;
 		$data['ord'] = $max_ord + 1;
-		
+		$data['date_update'] = $data['date_create'] = time();
 		$this->db->insert($this->articles_table, $data);
 		return $this->db->insert_id();
+	} 
+
+	function inc_article_visit($article_id) {
+		$sql = "UPDATE {$this->articles_table} SET visits = visits + 1 WHERE id_ = $article_id";
+		$this->db->query($sql);
 	} 
 
 	// set article's order to new order value, and shift another items if neccessary
@@ -203,7 +209,13 @@ SQL;
 		return true;
 	}
 
-	
+	function get_most_visited_articles_info($count=5) {
+		$this->db->limit($count);
+		$this->db->order_by('visits', 'desc');
+		$this->db->select($this->article_info_fields);
+		$query = $this->db->get($this->articles_table);
+		return $query->result();;
+	}
 	
 	/* return active category info and menu as array
 	 * 

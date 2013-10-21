@@ -19,19 +19,17 @@ class Login extends Base_page {
 		
 		$get_password = $this->input->post('pass');
 		$logged = $this->session->userdata('logged');
+			
+	
 		
-		if (!$this->input->cookie($this->secure_cookies_name)) {
-			if($get_password === $this->password) {	
-				$last_page = $this->session->userdata('refer');
-				$this->session->set_userdata('logged', TRUE);
-				redirect($last_page);
-			}
+		if($get_password === $this->password) {	
+			$last_page = $this->session->userdata('refer');
+			$this->session->set_userdata('logged', TRUE);
+			redirect($last_page);
 		}
+		
 		$data['logged'] = $logged;
 		$this->__show("Вход в систему", "Вход в систему", '', "login",  $data);
-		
-		$cookie = array('expire' => 3, 'name' => $this->secure_cookies_name, 'value'=>':P');
-		$this->input->set_cookie($cookie);
 	}
 	
 	function logout() {

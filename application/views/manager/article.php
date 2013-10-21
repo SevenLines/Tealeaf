@@ -6,6 +6,7 @@ $(function() {
 });
 </script>
 <div class='article'>
+<div style="float:right;clear:none;font-size: 0.8em">обновлялось: <?php echo date('H:i - d/m/Y', $article2->date_update); ?> </div>
 <?php
 	echo form_open("admin/article/update/$article2->id_");
 
