@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-include_once 'application/controllers/auth_base.php';
+include_once 'admin_base.php';
 
-class Article extends Auth_base {
-	var $flag = "manager";
+class Article extends Admin_base {
+	
 
 	function __construct()
     {

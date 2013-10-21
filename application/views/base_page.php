@@ -39,7 +39,15 @@
 
 
 <!-- CONTENT STARTS HERE -->
-<?php if (isset($subview)) include($subview.'.php'); ?>
+<?php 
+	$view_name = $subview.'.php';
+	if (file_exists(__DIR__.'/'.$view_name)) {
+		if (isset($subview)) include($subview.'.php');
+	} else {
+		echo 'Oops, looks like I cant find template:<p style="margin:0.5em"><img src="images/crash.gif" />';
+		log_message('error', "Template '$subview' is not exists");
+	}
+?>
 
 <!-- CONTENT ENDS HERE -->
 

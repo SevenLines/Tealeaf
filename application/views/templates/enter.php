@@ -2,6 +2,9 @@
 	<div id="slider">
 		<?php if ($logged) { ?> 
 	 		<a href = "<?php echo site_url()."/login/logout"; ?>" >выйти</a>
+	 		<?php if ($category_id != 0 || isset($article_id)) { ?>
+	 			<a href = "<?php echo site_url()."/admin"; ?>" >управление</a>
+	 		<?php } ?>
 	 		<?php if ($category_id != 0) { ?>
 	 			<?php if($flag == '') { ?>
 	 				<a href = "<?php echo site_url()."/admin/category/$category_id"; ?>" >категория</a>

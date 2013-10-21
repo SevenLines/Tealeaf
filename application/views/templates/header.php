@@ -1,8 +1,9 @@
 <head>
-<base href="<?php echo base_url(); ?>/www/" />
+<base href="<?php echo base_url(); ?>www/" />
 
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="styles/menu.css">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <script type="text/javascript" src="scripts/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/main.js"></script>
 <meta charset="utf-8">

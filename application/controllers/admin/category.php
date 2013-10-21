@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-include_once 'application/controllers/auth_base.php';
+include_once 'admin_base.php';
 
-class Category extends Auth_base {
+class Category extends Admin_base {
 	var $current_controller = "admin/category";
-	var $flag = "manager";
+	
 	
 	function __construct()
     {
@@ -41,7 +41,7 @@ class Category extends Auth_base {
 		
 		$data['ords'] = $this->__get_select_ord($data['articles']);
 		
-		$data['breadcrumbs'] = '<a href="'.site_url().'/admin/categories"><< к выбору категорий</a>';
+		$data['breadcrumbs'] = '<a href="'.site_url().'/admin"><< к выбору категорий</a>';
 		
 		$this->__show( $title, "Категория", "", "manager/category",$data, $category_id);
 	}	

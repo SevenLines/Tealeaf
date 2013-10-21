@@ -30,13 +30,26 @@ class Base_page extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('ArticlesModel'); // for using database model
+		$this->load->model('StatsModel'); // for track user
 		$this->load->library('session'); // fore using CI session
+		
 		$this->last_url = $this->session->userdata('refer');
 		$this->logged = $this->session->userdata('logged');
 		if ($this->rewrite_refer_url) {
 			$this->session->set_userdata('refer', current_url());
 		} 
+		$this->__checkUserSession();
     }
+
+	public function __checkUserSession()
+	{
+		// if user first time entered, and save this visit to the db
+		if (!$this->session->userdata('entered')) {
+			$this->session->set_userdata('entered', 1);
+			$this->StatsModel->save_current_visit();
+		}
+	}
+	
 
 	// fill data array with menu items
 	public function __fillMenuData(&$data, $category_id, $show_breadcrumbs=false)
