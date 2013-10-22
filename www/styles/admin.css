@@ -187,6 +187,10 @@
 	margin:0;
 }
 
+.article textarea {
+	font-size: 1em;
+}
+
 .article table td{padding-right:1em;} 
 .article table td:last-child {padding-right:0;}
 

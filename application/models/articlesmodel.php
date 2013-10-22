@@ -159,6 +159,10 @@ SQL;
 		if ( isset($data['category_id']) && $data['category_id'] == 0) {
 			$data['category_id'] = NULL;
 		}
+		if (isset($data['text'])) {
+			//$data['text'] = htmlspecialchars($data['text']);
+		}
+		
 		$data['date_update'] = time();
 		$this->db->where('id_', $article_id);
 		$this->db->update($this->articles_table, $data);		

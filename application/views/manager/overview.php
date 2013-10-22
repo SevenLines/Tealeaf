@@ -2,7 +2,6 @@
 <link rel='stylesheet'  href="styles/admin.css" type="text/css">
 
 <script type="text/javascript" src="scrpits/main"></script>
-
 <!-- CATEGORIES LIST -->
 <div class="categories list-row">
 <label>Список категорий</label>
@@ -54,6 +53,7 @@
 <!-- END LAST VISITS INFO -->
 
 <!-- ARTICLES STATISTICS INFO -->
+
 <div class="article-stat" ?>
 <?php include 'article-stat.php' ?>
 </div>

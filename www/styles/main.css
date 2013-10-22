@@ -10,7 +10,7 @@ body{
 	font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-h1 {
+.content h1 {
 	margin:0;
 	font-weight: normal;
 	font-family: Georgia, 'Times New Roman', Times, serif;
@@ -18,7 +18,7 @@ h1 {
 }
 
 
-h2 {
+.content h2 {
 	margin: 0;
 	padding:0;
 	margin-top:0.5em;
@@ -27,7 +27,7 @@ h2 {
 	color: #003366;
 }
 
-h3 {
+.content h3 {
 	margin:0;
 	margin-top:0.5em;
 }
@@ -60,6 +60,8 @@ a:hover {
 /*All what is below menu*/
 .content{
 	padding: 0 2em;
+	display:block;
+	background-color: #FDFDFD;	
 }
 
 .plain_text{
