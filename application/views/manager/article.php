@@ -1,5 +1,4 @@
 <link rel='stylesheet'  href="styles/admin.css" type="text/css">
-<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 $(function() {
 	submit_only_changed($('.article form')[0]);
@@ -37,12 +36,12 @@ $(function() {
 </table>
 <?php
 	echo form_hidden('pos', isset($textarea_pos)?$textarea_pos:0);
-	
-	echo form_label('текст статьи');	
 ?>
 
 <textarea name="text" style="">
-<?php echo $article2->text; ?>
+<?php
+echo $article2->text; 
+?>
 </textarea>
 
 <script type="text/javascript" >
@@ -54,6 +53,24 @@ $(function() {
 	});
 	setCaretPosition(textarea, pos.value); 
 </script>
+
+
+<!--
+<script type="text/javascript" src="scripts/nicEdit.js"></script>
+<script type="text/javascript">
+	nicEditors.allTextAreas({fullPanel : true});
+</script>
+<script type="text/javascript" src="scripts/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    body_class: "wrapper, content",
+    content_css: "styles/main.css, styles/editor.css",
+    plugins: "code",
+    document_base_url: "<?php echo base_url(); ?>www", 
+ });
+</script>
+-->
 
 <?php
 

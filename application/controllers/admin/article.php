@@ -13,6 +13,7 @@ class Article extends Admin_base {
 
 	function index($article_id=null) {
 		$this->article_id = $article_id;
+
 		
 		$data['textarea_pos'] = $this->session->userdata('textarea_pos');
 		$data['status'] = $this->session->flashdata('status');
@@ -22,7 +23,6 @@ class Article extends Admin_base {
 		}
 		$data['article2'] = $this->ArticlesModel->get_article($article_id);
 		$data['categories_list'] = $this->__get_categories_list($article_id);
-
 		if ( isset($data['article2']->category_id) ) {
 			$category_name = $data['categories_list'][$data['article2']->category_id];
 		} else {
