@@ -264,6 +264,7 @@ hr {
 	border:silver 1px solid;
 }
 
+
 .tasks li.easy,
 .tasks li.medium,
 .tasks li.hard,
@@ -275,6 +276,13 @@ hr {
 .tasks li.medium {	background-color: #DDDD22; }
 .tasks li.hard { background-color: #DD8822; }
 .tasks li.nightmare { background-color: #DD2200; }
+
+.tasks li.selected {
+	background:silver;
+	color: gray;
+}
+
+
 
 /* end tasks */
 

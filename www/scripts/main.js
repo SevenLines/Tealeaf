@@ -5,6 +5,10 @@
 		$(this).siblings('.info').slideToggle();
 	});
 	
+	$(".selected").hover(function() {
+		$(this).toggleClass('selected',250);
+	});
+	
     $('.nav>ul>li').hover(
 		function () {
 			//show its submenu
