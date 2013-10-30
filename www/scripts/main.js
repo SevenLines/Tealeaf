@@ -1,8 +1,12 @@
 ﻿$(document).ready(function() {
 	
 	
-	$('.lab').find('.info').hide().end().find('.title').click(function() {
-		$(this).next().slideToggle();
+	$('.lab').find('.info').hide().end().find('h2').click(function() {
+		$(this).siblings('.info').slideToggle();
+	});
+	
+	$(".selected").hover(function() {
+		$(this).toggleClass('selected',250);
 	});
 	
     $('.nav>ul>li').hover(

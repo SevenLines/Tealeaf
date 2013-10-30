@@ -32,6 +32,26 @@ body{
 	margin-top:0.5em;
 }
 
+.content li {
+	padding-bottom:0.5em;
+}
+
+.content table {
+	border: solid 1px gray;
+	border-collapse:collapse;
+}
+
+.content td,
+.content th {
+	padding: 4px;
+	border: 1px solid silver;
+} 
+
+.content th  {
+	background-color: #EEE;
+	color:gray;
+	text-shadow: 1px 1px white;
+}
 
 a {
 	color: #00AEEF;
@@ -80,8 +100,14 @@ a:hover {
 	margin: 1em 0 2em 0
 }
 
-.plain_text b{
+.plain_text b,
+.plain_text strong{
 	color: darkblue;
+}
+
+.plain_text code {
+	color: darkblue;
+	font-size: 1em;
 }
 
 .lessons_list {
@@ -129,6 +155,7 @@ a:hover {
 .syntaxhighlighter  {
     border: solid 1px silver;
     padding: 2px;
+    box-sizing: border-box;
 }    
 
 .toolbar {
@@ -200,17 +227,24 @@ hr {
 
 /* lab */
 
-.lab .title {
-	margin-bottom: 0.3em;	
+.lab {
+	padding:0;
+	margin:0;
+	display: block;
 }
 
-.lab .title a {
+
+.lab h2 {
 	color: #003366;
 	cursor: pointer;
 	border-bottom:dashed 1px;
+	display: inline-block;
+	margin:0;
+	margin-bottom: 0.3em;
+	padding:0;	
 }
 
-.lab .title a:hover {
+.lab h2:hover {
 	color: #FF7700;
 }
 
@@ -230,6 +264,7 @@ hr {
 	border:silver 1px solid;
 }
 
+
 .tasks li.easy,
 .tasks li.medium,
 .tasks li.hard,
@@ -241,6 +276,13 @@ hr {
 .tasks li.medium {	background-color: #DDDD22; }
 .tasks li.hard { background-color: #DD8822; }
 .tasks li.nightmare { background-color: #DD2200; }
+
+.tasks li.selected {
+	background:silver;
+	color: gray;
+}
+
+
 
 /* end tasks */
 

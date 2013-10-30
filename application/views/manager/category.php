@@ -1,4 +1,4 @@
-<link rel='stylesheet'  href="styles/jquery-ui/smoothness/jquery-ui-1.10.3.custom.min.css" type="text/css">
+
 <link rel='stylesheet'  href="styles/admin.css" type="text/css">
 <script type="text/javascript">
 $(function() {
@@ -101,7 +101,7 @@ $(function() {
 <!-- Конец сообщений -->
 
 <!-- Скрипты для сообщений -->
-<script type="text/javascript" src="scripts/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	$('.delete').click(function() {
 		var a = this;

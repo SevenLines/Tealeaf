@@ -39,7 +39,9 @@ $(function() {
 ?>
 
 <textarea name="text" style="">
-<?php echo $article2->text; ?>
+<?php
+echo $article2->text; 
+?>
 </textarea>
 
 <script type="text/javascript" >
@@ -51,26 +53,6 @@ $(function() {
 	});
 	setCaretPosition(textarea, pos.value); 
 </script>
-
-
-<!--
-<script type="text/javascript" src="scripts/nicEdit/nicEdit.js"></script>
-<script type="text/javascript">
-	nicEditors.allTextAreas({fullPanel : true});
-</script>
--->
-<!--
-<script type="text/javascript" src="scripts/tinymce/tinymce.min.js"></script>
-<script type="text/javascript">
-tinymce.init({
-    selector: "textarea",
-    body_class: "wrapper, content",
-    content_css: "styles/main.css, styles/editor.css",
-    plugins: "code",
-    document_base_url: "<?php echo base_url(); ?>www", 
- });
-</script>
--->
 
 <?php
 
