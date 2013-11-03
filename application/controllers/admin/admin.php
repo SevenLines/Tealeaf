@@ -6,14 +6,14 @@ class Admin extends Auth_base {
 		
 	var $password = "L7o4c3k2ed";	
 	
-	function __construct()
+    function __construct()
     {
         parent::__construct();
     }
 
-	function index() {
-		parent::index();
-	}
+    function index() {
+            parent::index();
+    }
 	
 	
 }

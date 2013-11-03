@@ -20,15 +20,18 @@ class ArticlesModel extends CI_Model {
 
 
 	function get_all_articles_info($enabled_only = 1) {
-		return get_articles_info_for_category(0, $enabled_only);
+		return $this->get_articles_info_list(0, $enabled_only);
 	}
 	
 	
-	function get_child_categories($category_id = NULL)
+	function get_child_categories($category_id = null)
 	{
-		$sql = "SELECT * FROM categories WHERE parent_id is ? ORDER BY ord, id_";
-		$query = $this->db->query($sql, $category_id);
-		return $query->result(); 
+            if ( isset($category_id) )
+                $sql = "SELECT * FROM categories WHERE parent_id = $category_id ORDER BY ord, id_";
+            else
+                $sql = "SELECT * FROM categories WHERE parent_id is NULL ORDER BY ord, id_";
+            $query = $this->db->query($sql);
+            return $query->result(); 
 	}
 	
 	function get_categories() {

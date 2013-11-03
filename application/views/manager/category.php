@@ -59,15 +59,12 @@ $(function() {
 			<a href="<?php echo site_url()."/admin/article/".$a->id_; ?>" title="редактор" class="edit">
 				
 			</a>
-			<a href="<?php echo site_url()."/admin/article/toggle/$a->id_/$a->enabled"; ?>" class=<?php echo $a->enabled?'show':'hide'; ?>
-				title="вкл/выкл">
-				&#9632;
+			<a href="<?php echo site_url()."/admin/article/toggle/$a->id_/$a->enabled"; ?>" class=<?php echo $a->enabled?'show':'hide'; ?>title="вкл/выкл">&#9632;
 			</a>
 			<a href="<?php echo site_url().'/admin/article/delete/'.$a->id_ ?>" class='delete'>
 				rmv
 			</a>
-			<a href="<?php echo site_url()."/admin/article/top/$a->id_"; ?>" class=<?php echo $a->top?'top':'ntop'; ?>
-				title="set as top">
+			<a href="<?php echo site_url()."/admin/article/top/$a->id_"; ?>" class=<?php echo $a->top?'top':'ntop'; ?> title="set as top">
 				&#9679;
 			</a>
 			<?php
