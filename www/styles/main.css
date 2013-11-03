@@ -264,6 +264,10 @@ hr {
 	border:silver 1px solid;
 }
 
+.tasks li a { color:#003366; }
+.tasks li a:hover { color:black; }
+
+
 
 .tasks li.easy,
 .tasks li.medium,
