@@ -97,50 +97,58 @@ class Base_page extends CI_Controller {
 	public function __show_articles_list($category_id)
 	{
 	    $category = $this->ArticlesModel->get_category($category_id);
-		
-		if ( !$this->logged && !$category->enabled ) {
-			redirect("admin/preview/$category_id");
-		}
+	
+            if(!is_object($category)) {
+                show_404();
+            }
+            
+            if ( !$this->logged && !$category->enabled ) {
+                    redirect("admin/preview/$category_id");
+            }
 		
 	    $data['articles'] = $this->ArticlesModel->get_articles_info_list($category_id);	
 		$data['controller_path'] = $category->controller;
 		$this->__show($category->title,
-				      $category->title_page,
-					  $category->description,
-					  'lessons/articles_list',
-					  $data, 
-					  $category_id);			
+                              $category->title_page,
+                              $category->description,
+                              'lessons/articles_list',
+                              $data, 
+                              $category_id);			
 	}
 	
 	/* show article for current category*/
 	public function __show_article($article_id = 0, $category_id = null) 
 	{
-		$this->article_id = $article_id;
+            $this->article_id = $article_id;
 			
-		if ( isset($article_id) && $article_id != 0 ) {  		
-            $data['articles_info'] = $this->ArticlesModel->get_article($article_id);
+            if ( isset($article_id) && $article_id != 0 ) {  		
+                
+                $data['articles_info'] = $this->ArticlesModel->get_article($article_id);
+                
+                if(!is_object($data['articles_info']) || $data['articles_info']->category_id != $category_id ) {
+                    show_404();
+                }
 
-			if ( !$this->logged && ($data['articles_info']->category_id != $category_id || !$data['articles_info']->enabled)) {
-				redirect("admin/preview/{$data['articles_info']->category_id}/$article_id");
-			}
-			
-			# track visits only if user is not admin
-			if(!$this->logged)
-				$this->ArticlesModel->inc_article_visit($article_id);
-			
-            $this->__show($data['articles_info']->title,
-            			  $data['articles_info']->title_page,
-            			  '',
-            			 'lessons/article_syntax', 
-            			 $data, 
-            			 $category_id,
-						 true);	
-		} else {		
-            $this->__show_articles_list($category_id);     
-		}			
+                if ( !$this->logged && !$data['articles_info']->enabled ) {
+                    redirect("admin/preview/{$data['articles_info']->category_id}/$article_id");
+                }
+
+                # track visits only if user is not admin
+                if(!$this->logged)
+                    $this->ArticlesModel->inc_article_visit($article_id);
+                
+                # show article
+                $this->__show(  $data['articles_info']->title,
+                                $data['articles_info']->title_page,
+                                '',
+                                'lessons/article_syntax', 
+                                $data, 
+                                $category_id,
+                                true);	
+            } else {		
+                $this->__show_articles_list($category_id);     
+            }			
 	}
-
-
 }
 
 /* End of file welcome.php */

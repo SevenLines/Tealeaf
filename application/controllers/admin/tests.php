@@ -10,6 +10,18 @@ class Tests extends Auth_base {
     }
     
     function index() {
+        $this->testPageContoller();
+    }
+    
+    function testPageContoller() {
+        $p = new Page();
+        $p->index();
+        $p->index(1);
+        $p->index(1, 2);
+        echo 1;
+    }
+    
+    function testArticlesModel() {
         try {
             $this->unit->run($this->ArticlesModel->get_articles_info_list(0), "is_array", "get_articles_info_list(0)");
             $this->unit->run($this->ArticlesModel->get_articles_info_list(0, -1), "is_array", "get_articles_info_list(0, -1)");
@@ -30,6 +42,6 @@ class Tests extends Auth_base {
             echo $e->getMessage();
         }
         echo $this->unit->report();
-        echo "done";
+        echo "done";  
     }
 }
