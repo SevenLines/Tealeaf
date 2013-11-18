@@ -47,6 +47,8 @@ $route['page/(:num)/(:num)'] = 'page/index/$1/$2';
 $route['page/(:num)/(:num)/(:any)'] = 'page/index/$1/$2/$3'; 
 $route['page/(:num)/(:any)'] = 'page/index/$1/$2'; 
 
+$route['student/(:num)'] = 'student/index/$1';
+
 $route['admin'] = "admin/overview";
 $route['admin/visits'] = "admin/visits/index";
 $route['admin/visits/(:num)'] = "admin/visits/index/$1";

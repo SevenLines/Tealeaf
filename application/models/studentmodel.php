@@ -14,15 +14,23 @@ class StudentModel extends CI_Model {
         
         /**
          * 
-         * @param CI_query $query
-         * @return first row in query or null if data is not exists
+         * @param integer $id id of row to get
+         * @param string $table table name
+         * @return null or row data if exists
          */
-        protected function _get_row_or_null($query) 
+        protected function __get_row_or_null($id, $table) 
         {
-            if ($query->num_rows() > 0 ) {
+            $this->db->where("id_", $id);
+            $query = $this->db->get($table);
+            return $this->__get_row_or_null_($query);
+        }
+        
+        protected function __get_row_or_null_($query) 
+        {
+           if ($query->num_rows() > 0 ) {
                 return $query->row();
             }
-            return null;
+            return null; 
         }
             
         /**
@@ -58,8 +66,7 @@ class StudentModel extends CI_Model {
             $this->db->delete($table);
         }
         
-        
-        
+       
         public function get_groups() 
         {
             $query = $this->db->get($this->groupTable);    
@@ -68,9 +75,7 @@ class StudentModel extends CI_Model {
                
         public function get_group($group_id) 
         {
-            $this->db->where("id_", $group_id);
-            $query = $this->db->get($this->groupTable);    
-            return $this->__get_row_or_null($query);
+            return $this->__get_row_or_null($group_id, $this->groupTable);
         }
         
         public function update_group($data, $group_id = null) 
@@ -97,10 +102,8 @@ class StudentModel extends CI_Model {
 	}
 
         public function get_student($student_id) 
-        {
-            $this->db->where("id_", $student_id);
-            $query = $this->db->get($this->studentTable);    
-            return $this->__get_row_or_null($query);
+        { 
+            return $this->__get_row_or_null($student_id, $this->studentTable);
         }
         
         public function update_student($data, $student_id = null) 
@@ -155,7 +158,7 @@ SQL;
                 $sql .= " and event_id = $event_id";
             }
             $query = $this->db->query($sql);
-            return $this->__get_row_or_null($query);
+            return $this->__get_row_or_null_($query);
         }
         
         /**
@@ -165,9 +168,7 @@ SQL;
          */
         public  function get_mark($mark_id)
         {
-            $this->db->where("id_", $mark_id);
-            $query = $this->db->get($this->markTable);
-            return $this->__get_row_or_null($query);
+            return $this->__get_row_or_null($mark_id, $this->markTable);
         }
         
         public function update_mark($mark_id, $mark) 
