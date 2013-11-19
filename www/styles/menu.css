@@ -3,7 +3,7 @@
 .nav {
 	float:left;
 	width:100%;
-	background:#EEE;
+	background:#CCC;
 	border-bottom: 1px solid #ccc;  	
 	margin-bottom: 10px;
 }
@@ -12,11 +12,11 @@
 	float: right;
 	padding-right:16px;
 	padding-top: 12px;
-	color: gray;
+	color: #999;
 }
 
 .nav>.mail>a {
-	color: silver;	
+	color: #999;	
 }
 
 .nav>.mail>a:hover {
@@ -33,7 +33,7 @@
 .nav>ul>li { 
 	float: left; 
 	position: relative; 
-	border-right: 1px solid #ccc; 
+	border-right: 1px solid #BBB; 
 	text-align: center;
 }
 
@@ -41,7 +41,7 @@
 	padding:0.8em 1em; 
 	text-align:left;
 	display: block; 
-	color: #FF7700;
+	color: black;/*#FF7700;*/
 }
 
 .nav>ul ul { 

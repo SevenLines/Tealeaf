@@ -135,7 +135,8 @@
 .show {color: #8F4;}
 .hide {color: silver;}
 .show:hover {color: green;}
-.hide:hover {color:#8F4;}
+.hide:hover {color:#8F4;}
+
 
 /* end of article_list specific */
 
@@ -171,6 +172,11 @@
 .article table {
 	padding:0;
 	margin:0;
+        border:none;
+}
+
+.article td {
+    border:none;
 }
 
 .article textarea {

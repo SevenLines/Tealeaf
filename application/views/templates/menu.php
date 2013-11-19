@@ -1,9 +1,13 @@
 
 <div class="mail"> 
-	<script>"".contact('abc', 'htam.mliamm', 'mail.ru');</script>
-	<span class='admin'><a href="">
-		
-	</a></span></div>
+	<script> 
+            // mega panic encrypting :O
+            "".contact('abc',
+                     '<?php echo strrev(substr($mail, 0, strlen ($mail) - 7 - 1)); ?>',
+                     '<?php echo substr($mail, -7); ?>' );
+        </script>
+       
+</div>
 <?php if (isset($menu)) { ?>
 <ul>	
 	<li>
