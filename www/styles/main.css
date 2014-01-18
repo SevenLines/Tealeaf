@@ -60,6 +60,30 @@ a:hover {
 	color: #FF7700;
 }
 
+/* ICONS */
+a[href$='.pdf'] {
+    background:transparent url(images/pdf_icon.png) center left no-repeat;
+    display:inline-block;
+    padding-left:20px;
+    line-height:20px;
+}
+
+a[href$='.djvu'] {
+    background:transparent url(images/djvu_icon.gif) center left no-repeat;
+    display:inline-block;
+    padding-left:20px;
+    line-height:20px;
+}
+
+a[href$='.doc'], a[href$='.docx'] {
+    background:transparent url(images/doc_icon.jpeg) center left no-repeat;
+    display:inline-block;
+    padding-left:20px;
+    line-height:20px;
+}
+
+/* END ICONS */
+
 /* Main wrapper wich is hold all contents*/
 .wrapper{
 	margin: 0 auto;
