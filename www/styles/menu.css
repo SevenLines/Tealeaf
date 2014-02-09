@@ -3,7 +3,7 @@
 .nav {
 	float:left;
 	width:100%;
-	background:#CCC;
+/*	background:#CCC;*/
 	border-bottom: 1px solid #ccc;  	
 	margin-bottom: 10px;
 }
@@ -20,7 +20,7 @@
 }
 
 .nav>.mail>a:hover {
-	color: #003366;	
+	color: red; /*#003366;	*/
 }
 
 .nav>ul {
@@ -39,6 +39,7 @@
 
 .nav>ul>li a{ 
 	padding:0.8em 1em; 
+        font-size: 1.1em;
 	text-align:left;
 	display: block; 
 	color: black;/*#FF7700;*/
@@ -57,7 +58,7 @@
 	 width:160px;
 	 
 	 box-shadow:0px 2px 2px gray;
-	 background:#EEE;
+	 background:#FFF;
 	 z-index: 9999;
 }
 
@@ -70,20 +71,24 @@
 .nav>ul ul li a { 
 	padding:8px 8px; 
 	display: block; 
-	color: #FF7700;
+        font-size: 1em;
+	color: #00AEEF;
 }
 
 .nav>ul a:hover { 
-	background:#FAFDFA;
+	background:#EEE;
+        background-image: url("images/pw_maze_blue.png");
 }
 
 .nav>ul  a.active{ 
-	background-color: #FAFDFA; 
-	color:#003366;
+	background-color: #EEE;
+        background-image: url("images/pw_maze_skyblue.png");
+        text-shadow: 0px 0px 3px silver;
+	color:white;/*#003366;*/
 }
 
-.nav>ul a:hover {
-	color: #EF00AE;
+.nav>ul ul a:hover {
+    color:black;
 }
 
 

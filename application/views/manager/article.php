@@ -1,8 +1,10 @@
 <link rel='stylesheet'  href="styles/admin.css" type="text/css">
+
 <script type="text/javascript">
 $(function() {
 	submit_only_changed($('.article form')[0]);
 });
+
 </script>
 <div class='article'>
 <div style="float:right;clear:none;font-size: 0.8em">обновлялось: <?php echo date('H:i - d/m/Y', $article2->date_update); ?> </div>

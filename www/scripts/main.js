@@ -1,46 +1,57 @@
-﻿$(document).ready(function() {
+$(document).ready(function() {
 	
+    // lab slider toggles
+    $('.lab').find('.info').hide().end().find('h2').click(function() {
+            $(this).siblings('.info').slideToggle();
+    });
+    
+    // lab selected item highlight
+    $(".selected").hover(function() {
+            $(this).toggleClass('selected',250);
+    });
 	
-	$('.lab').find('.info').hide().end().find('h2').click(function() {
-		$(this).siblings('.info').slideToggle();
-	});
-	
-	$(".selected").hover(function() {
-		$(this).toggleClass('selected',250);
-	});
-	
+    // menu slideDown
     $('.nav>ul>li').hover(
-		function () {
-			//show its submenu
-			$('ul', this).stop().slideDown(100);
+            function () {
+                    //show its submenu
+                    $('ul', this).stop().slideDown(100);
 
-		}, 
-		function () {
-			//hide its submenu
-			$('ul', this).stop().slideUp(100);			
-		}
-	);
+            }, 
+            function () {
+                    //hide its submenu
+                    $('ul', this).stop().slideUp(100);			
+            }
+    );
 
-	$('.login .enter').click(function() {	
-		$(".loginModal_overlay").fadeToggle('fast');
-		$(".loginModal_overlay_bg").fadeToggle('fast');
-		return false;
-	});
+    // login fade in / out
+    $('.login .enter').click(function() {	
+            $(".loginModal_overlay").fadeToggle('fast');
+            $(".loginModal_overlay_bg").fadeToggle('fast');
+            return false;
+    });
 	
-	$("#admin:not(.fixed)").hover(function() {
-		$(this).find("#slider").animate({
-			top: 0
-		}, 300);
-	}, function() {
-		$(this).find("#slider").animate({
-			top: '-1.55em'
-		}, 300);
-	});
-	
-	
-	
+    // admin slider events
+    $("#admin:not(.fixed)").hover(function() {
+            $(this).find("#slider").animate({
+                    top: 0
+            }, 300);
+    }, function() {
+            $(this).find("#slider").animate({
+                    top: '-1.55em'
+            }, 300);
+    });
+
+    $('#toc').toc({
+        'selectors': 'h2',
+        'container': '.plain_text'
+    });
 	//$(".item-list li:even").css("background-color","#F2F2F2");
 });
+
+function content() {
+    
+}
+
 
 // return caret position in textarea
 function getCaretPosition (ctrl) {

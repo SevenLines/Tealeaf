@@ -125,12 +125,17 @@ class Base_page extends CI_Controller {
 
         if ( isset($article_id) && $article_id != 0 ) {  		
 
+            // считываем информацию о статье, включая сам текст
             $data['articles_info'] = $this->ArticlesModel->get_article($article_id);
-
-            if(!is_object($data['articles_info']) || $data['articles_info']->category_id != $category_id ) {
+            
+            // проверяем что категория статьи соответствует категории указанной 
+            // в $category_id
+            if(!is_object($data['articles_info']) 
+                    || $data['articles_info']->category_id != $category_id ) {
                 show_404();
             }
-
+            
+            // отключенный категории можно просмотреть только администратору
             if ( !$this->logged && !$data['articles_info']->enabled ) {
                 redirect("admin/preview/{$data['articles_info']->category_id}/$article_id");
             }

@@ -19,15 +19,16 @@ class Article extends Admin_base {
 		$data['status'] = $this->session->flashdata('status');
 		
 		if (!isset($article_id)) {
-			redirect('admin/categories');
+                    redirect('admin/categories');
 		}
+                
 		$data['article2'] = $this->ArticlesModel->get_article($article_id);
 		$data['categories_list'] = $this->__get_categories_list($article_id);
 		if ( isset($data['article2']->category_id) ) {
-			$category_name = $data['categories_list'][$data['article2']->category_id];
+                    $category_name = $data['categories_list'][$data['article2']->category_id];
 		} else {
-			$category_name = 'без категории';
-			$data['article2']->category_id = 0;
+                    $category_name = 'без категории';
+                    $data['article2']->category_id = 0;
 		}
 		
 		$data['breadcrumbs'] = '<a href='.site_url().'/admin/category/'.$data['article2']->category_id.'>&lt;&lt; '.$category_name.'</a>';
@@ -37,6 +38,7 @@ class Article extends Admin_base {
 	
 	function update($article_id=null) {
 		$data = $this->input->post();
+                // полжение курсора в textarea
 		$this->session->set_userdata('textarea_pos', $data['pos']);
 		
 		unset($data['pos']);

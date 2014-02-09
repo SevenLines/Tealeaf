@@ -6,6 +6,7 @@ include_once 'Textile/DataBag.php';
 include_once 'Textile/Tag.php';
 
 ?>
+    
 <div class="plain_text">
 <?php 
 	$parser = new Parser(); 
