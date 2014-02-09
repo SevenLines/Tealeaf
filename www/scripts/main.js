@@ -45,7 +45,25 @@ $(document).ready(function() {
         'selectors': 'h2',
         'container': '.plain_text'
     });
-	//$(".item-list li:even").css("background-color","#F2F2F2");
+    
+    // wrap all imags with links to src
+    $('img').wrap(function() {
+        return '<a href="' 
+                + $(this).attr("src") 
+                + '">'
+                + $(this).text()
+                + '</a>';
+    });
+    
+    // fix anchors reference 
+//    var pathname = window.location.href.split('#')[0];
+//    $('a[href^="#"]').each(function() {
+//        var $this = $(this),
+//            link = $this.attr('href');
+//        $this.attr('href', pathname + link);
+//    });
+    
+    
 });
 
 function content() {

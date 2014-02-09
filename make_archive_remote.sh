@@ -1,0 +1,1 @@
+rm tealeaf_remote.zip & zip -r  tealeaf_remote.zip . -x *.zip *.sh *.git* *.settings* nbproject\* *config/config*

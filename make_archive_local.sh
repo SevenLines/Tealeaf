@@ -1,0 +1,1 @@
+rm tealeaf.zip & zip -r tealeaf.zip . -x *.zip *.sh *.git* *.settings* nbproject\*
