@@ -12,18 +12,23 @@ class Page extends Base_page {
 	//Called when no paramters set for constructor
 	public function index($category_id=null, $article_id=null)
 	{
-		
-		if ( !isset($category_id) && !isset($article_id) ) {
-			$this->__showMainPage();
-			return;	
-		}
+            // проверка отключен ли сайт             
+            if (!$this->state && !$this->logged) { 
+                $this->__show_turned_off();
+                return;
+            }
+            
+            if ( !isset($category_id) && !isset($article_id) ) {
+                    $this->__showMainPage();
+                    return;	
+            }
 
-		if ( !isset($article_id) ) {
-			$this->__show_articles_list($category_id);
-			return;
-		}
-		
-		$this->__show_article($article_id, $category_id);
+            if ( !isset($article_id) ) {
+                    $this->__show_articles_list($category_id);
+                    return;
+            }
+
+            $this->__show_article($article_id, $category_id);
 	}
 	
 	public function inside()
@@ -44,7 +49,8 @@ class Page extends Base_page {
 						  '',
 						  "templates/plain_text", $data, 0);		
 		} else {
-			$data['text'] = '^_^';
+			$data['text'] = '^_^';
+
 			$this->__show("пустота",
 						  "пока ничего нету",
 						  '',

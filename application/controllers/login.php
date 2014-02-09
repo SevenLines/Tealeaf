@@ -10,7 +10,7 @@ class Login extends Base_page {
     function __construct()
     {
         parent::__construct();		        
-        $this->load->helper('form');
+        
         $this->load->library('session'); // fore using CI session
     }
 
@@ -20,13 +20,18 @@ class Login extends Base_page {
         $logged = $this->session->userdata('logged');
 
         if( $get_password === $real_password ) {	
-                $last_page = $this->session->userdata('refer');
-                $this->session->set_userdata('logged', TRUE);
-                redirect($last_page);
+            $last_page = $this->session->userdata('refer');
+            $this->session->set_userdata('logged', TRUE);
+            redirect($last_page);
+        }
+        
+            $data['logged'] = $logged;
+        if ($this->state) {
+            $this->__show("Вход в систему", "Вход в систему", '', "login",  $data);
+        } else {
+            $this->__show_turned_off();
         }
 
-        $data['logged'] = $logged;
-        $this->__show("Вход в систему", "Вход в систему", '', "login",  $data);
     }
 
     function logout() {

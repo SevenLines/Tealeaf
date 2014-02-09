@@ -119,7 +119,7 @@ a[href$='.doc'], a[href$='.docx'] {
 
 .plain_text{
 	font-family: Verdana,Arial;
-	paddinf: 1em 0 1em 0;
+	padding: 1em 0 1em 0;
 }
 
 

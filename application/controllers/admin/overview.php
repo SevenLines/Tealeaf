@@ -32,5 +32,15 @@ class Overview extends Admin_base {
 		$data['ords'] = $this->__get_select_ord($data['categories']);
 		$this->__show("", "manager", "", "manager/overview",$data);
 	}	
+        
+        function turn_on() {
+            $this->OptionsModel->set_state("1");
+            redirect("admin");
+        }
+        
+        function turn_off() {
+            $this->OptionsModel->set_state("0");
+            redirect("admin");
+        }
 
 }

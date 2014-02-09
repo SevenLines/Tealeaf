@@ -3,6 +3,7 @@
 class Base_page extends CI_Controller {
 	var $email = "mmailm.math@mail.ru";
 	var $base_view = 'base_page';
+        var $turnedoff_view = 'turnedoff';
 	var $last_url = '';
 	var $current_controller = '';
 	var $rewrite_refer_url = TRUE; // TRUE means that every time u enter,  $this->session->set_userdata('refer', current_url()); called
@@ -10,6 +11,7 @@ class Base_page extends CI_Controller {
 	var $article_id = null;
 	var $status = '';
 	var $logged = '';
+        var $state = true;
 	
 	/**
 	 * Index Page for this controller.
@@ -33,10 +35,15 @@ class Base_page extends CI_Controller {
         $this->load->model('OptionsModel'); // for access to options
         $this->load->model('StatsModel'); // for track user
         $this->load->library('session'); // fore using CI session
+        $this->load->helper('form');
 
+        // считываем настройки
         $this->last_url = $this->session->userdata('refer');
         $this->email = $this->OptionsModel->email();
         $this->logged = $this->session->userdata('logged');
+        $this->state = $this->OptionsModel->state();
+        
+
         if ($this->rewrite_refer_url) {
                 $this->session->set_userdata('refer', current_url());
         } 
@@ -56,7 +63,6 @@ class Base_page extends CI_Controller {
     // fill data array with menu items
     public function __fillMenuData(&$data, $category_id, $show_breadcrumbs=false)
     {
-
             $menu = array();
 
             $data['top_article_info'] = $this->ArticlesModel->get_top_article_info();
@@ -73,26 +79,36 @@ class Base_page extends CI_Controller {
                             $viewName, 
                             &$data, 
                             $category_id=0,
-                            $show_breadcrumbs=false) 
+                            $show_breadcrumbs=false,
+                            $main_view = null) 
     {
-            $data['title'] = $title;
-            $data['description'] = $description;
-            $data['title_page'] = $title_page;
-            $data['mail'] = $this->email;
-            $data['logged'] = $this->session->userdata('logged');
-            $data['category_id'] = $category_id;
-            $data['article_id'] = $this->article_id;
-            $data['flag'] = $this->flag;
+        if ( !isset($main_view) ) {
+            $main_view = $this->base_view;
+        }
 
-            $this->__fillMenuData($data, $category_id, $show_breadcrumbs);
+        
+        $data['title'] = $title;
+        $data['description'] = $description;
+        $data['title_page'] = $title_page;
+        $data['mail'] = $this->email;
+        $data['logged'] = $this->session->userdata('logged');
+        $data['category_id'] = $category_id;
+        $data['article_id'] = $this->article_id;
+        $data['flag'] = $this->flag;
+        $data['state'] = $this->state;
 
-            if (isset ($viewName)) {
-            if ($viewName != $this->base_view) {
-                    $data['subview'] = $viewName;
-                    } 	
-    }
 
-            $this->load->view($this->base_view, $data);
+        
+        $this->__fillMenuData($data, $category_id, $show_breadcrumbs);
+
+        if (isset ($viewName)) {
+            // чтобы изюежать рекурсии
+            if ($viewName != $main_view) {
+                $data['subview'] = $viewName;
+            } 	
+        }
+
+        $this->load->view($main_view, $data);
     }
 
     /* used to show articles list of the selected category */
@@ -118,6 +134,32 @@ class Base_page extends CI_Controller {
                           $category_id);			
     }
 
+    /**
+     * показать страницу с отключенной информацией
+     */
+    public function __show_turned_off() {
+        $this->article_id = $this->OptionsModel->turned_off_article_id();
+        $article_id = $this->article_id;
+        if ( isset($article_id) && $article_id != 0 ) {  		
+
+            // считываем информацию о статье, включая сам текст
+            $data['articles_info'] = $this->ArticlesModel->get_article($article_id);
+            # track visits only if user is not admin
+            if(!$this->logged)
+                $this->ArticlesModel->inc_article_visit($article_id);
+
+            # show article
+            $this->__show(  $data['articles_info']->title,
+                            $data['articles_info']->title_page,
+                            '',
+                            'lessons/article', 
+                            $data, 
+                            null,
+                            false,
+                            "turned_off");
+        }
+    }
+    
     /* show article for current category*/
     public function __show_article($article_id = 0, $category_id = null) 
     {

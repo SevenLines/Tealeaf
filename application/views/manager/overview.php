@@ -1,6 +1,17 @@
 <link rel='stylesheet'  href="styles/admin.css" type="text/css">
 
 <script type="text/javascript" src="scrpits/main"></script>
+<!-- turn on /off site -->
+<?php if ($state) { ?>
+<?php echo form_open('admin/overview/turn_off'); ?>
+<?php echo form_submit('turnoff', 'выключить'); ?>
+<?php echo form_close(); ?>
+<?php } else { ?>
+<?php echo form_open('admin/overview/turn_on'); ?>
+<?php echo form_submit('turnon', 'включить'); ?>
+<?php echo form_close(); ?>
+<?php } ?>
+
 <!-- CATEGORIES LIST -->
 <div class="categories list-row">
 <label>Список категорий</label>
