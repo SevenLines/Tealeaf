@@ -47,7 +47,7 @@ $(document).ready(function() {
     });
     
     // wrap all imags with links to src
-    $('img').wrap(function() {
+    $('.content img').wrap(function() {
         return '<a href="' 
                 + $(this).attr("src") 
                 + '">'

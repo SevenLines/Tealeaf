@@ -52,24 +52,35 @@ class Base_page extends CI_Controller {
 
     public function __checkUserSession()
     {
-            // if user first time entered, and save this visit to the db
-            if (!$this->session->userdata('entered')) {
-                    $this->session->set_userdata('entered', 1);
-                    $this->StatsModel->save_current_visit();
-            }
+        // if user first time entered, and save this visit to the db
+        if (!$this->session->userdata('entered')) {
+            $this->session->set_userdata('entered', 1);
+            $this->StatsModel->save_current_visit();
+        }
     }
 	
 
     // fill data array with menu items
     public function __fillMenuData(&$data, $category_id, $show_breadcrumbs=false)
     {
-            $menu = array();
+        $menu = array();
 
-            $data['top_article_info'] = $this->ArticlesModel->get_top_article_info();
-            list($data['menu'], $active_index) = $this->ArticlesModel->get_menu_array($category_id);
-            if ( $show_breadcrumbs && $active_index != -1) {
-                    $data['breadcrumbs'] = $data['menu'][$active_index]['title'];
-            }
+        $data['top_article_info'] = $this->ArticlesModel->get_top_article_info();
+        list($data['menu'], $active_index) = $this->ArticlesModel->get_menu_array($category_id);
+        
+        if ( $show_breadcrumbs && $active_index != -1) {
+            $data['breadcrumbs'] = $data['menu'][$active_index]['title'];
+        }
+        
+        // add specific info for categories in menu array
+        foreach($data['menu'] as &$c) {
+            $c['active'] = $c['id_'] == $category_id;
+            
+            $c['class'] = "";
+            if ($c['active']) { $c['class'] .= " active"; }
+            $c['class'] = trim($c['class']);
+            $c['href'] = site_url()."/page/{$c['id_']}";
+        }
     } 
 
     /*used to show default article with title and text*/
@@ -124,7 +135,7 @@ class Base_page extends CI_Controller {
         }
 
         $data['articles'] = $this->ArticlesModel->get_articles_info_list($category_id);	
-            $data['controller_path'] = $category->controller;
+//            $data['controller_path'] = $category->controller;
             $this->__show($category->title,
                           $category->title_page,
                           $category->description,

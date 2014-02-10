@@ -23,8 +23,8 @@ $(function() {
 	echo form_label('описание', 'description');
 	echo form_textarea('description', $category2->description);
 	
-	echo form_label('контроллер', 'controller');
-	echo form_input('controller', $category2->controller);
+	echo form_label('иконка (изображение)', 'icon_path');
+	echo form_input('icon_path', $category2->icon_path);
 
 	echo form_submit('submit','Сохранить');
 	

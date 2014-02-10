@@ -249,7 +249,8 @@ SQL;
 			$item = array();
 			$item['title_menu'] = $ctg->title_menu;
 			$item['title'] = url_title($ctg->title);
-			$item['controller'] = $ctg->controller;
+                        $item['icon_path'] = $ctg->icon_path;
+//			$item['controller'] = $ctg->controller;
 			$item['id_'] = $ctg->id_;
 			foreach($this->get_articles_info_list($ctg->id_) as $article) {
 				$art['title_menu'] = $article->title_menu;

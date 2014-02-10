@@ -1,77 +1,80 @@
 /* This file contains styles for menu*/
 
 .nav {
-	float:left;
-	width:100%;
+    float:left;
+    width:100%;
 /*	background:#CCC;*/
-	border-bottom: 1px solid #ccc;  	
-	margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;  	
+    margin-bottom: 10px;
 }
 
 .nav .mail {
-	float: right;
-	padding-right:16px;
-	padding-top: 12px;
-	color: #999;
+    float: right;
+    padding-right:16px;
+    padding-top: 12px;
+    color: #999;
 }
 
 .nav>.mail>a {
-	color: #999;	
+    color: #999;	
 }
 
 .nav>.mail>a:hover {
-	color: red; /*#003366;	*/
+    color: black; /*#003366;	*/
 }
 
 .nav>ul {
-	list-style: none;
-	padding-left:0;
-	margin:0;
+    list-style: none;
+    padding-left:0;
+    margin:0;
 }
 
 
 .nav>ul>li { 
-	float: left; 
-	position: relative; 
-	border-right: 1px solid #BBB; 
-	text-align: center;
+    float: left; 
+    position: relative; 
+    border-right: 1px solid #BBB; 
+    text-align: center;
 }
 
 .nav>ul>li a{ 
-	padding:0.8em 1em; 
-        font-size: 1.1em;
-	text-align:left;
-	display: block; 
-	color: black;/*#FF7700;*/
+    padding:12px 16px; 
+    font-size: 20px;
+    text-align:left;
+    line-height: 20px;
+    display: block; 
+    color: black;/*#FF7700;*/
+    overflow: hidden;
 }
 
 .nav>ul ul { 
-	 border: none; 
-	 display:none;
-	 
-	 padding:0;
-	 margin:0;
-	 
-	 list-style:none;
-	 position:absolute;
-	 
-	 width:160px;
-	 
-	 box-shadow:0px 2px 2px gray;
-	 background:#FFF;
-	 z-index: 9999;
+    border: none; 
+    display:none;
+
+    padding:0;
+    margin:0;
+
+    list-style:none;
+    position:absolute;
+
+    width:160px;
+
+    box-shadow:0px 2px 2px gray;
+    background:#FFF;
+    z-index: 9999;
 }
 
 .nav>ul ul li {
-	border-top:1px solid #ccc;	
-	font-size: 12px;
+    border-top:1px solid #ccc;	
+    font-size: 12px;
 }
 
 
 .nav>ul ul li a { 
 	padding:8px 8px; 
 	display: block; 
-        font-size: 1em;
+        font-size: 12px;
+        line-height: 1.2;
 	color: #00AEEF;
 }
 
@@ -89,6 +92,15 @@
 
 .nav>ul ul a:hover {
     color:black;
+}
+
+/* ICON */
+.nav .icon {
+    float: left;
+    display:block;
+    height:20px;
+    margin-right:4px;
+    text-align:left;
 }
 
 
