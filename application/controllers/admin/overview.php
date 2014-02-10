@@ -30,6 +30,27 @@ class Overview extends Admin_base {
 		$data['visitors'] = $this->StatsModel->get_last_visitiors(0,20);
 		$data['articles_stat'] = $this->ArticlesModel->get_most_visited_articles_info();
 		$data['ords'] = $this->__get_select_ord($data['categories']);
+                
+                //generate specific categories info 
+                foreach ($data['categories'] as &$category) {
+                    $c = (array) $category;
+                    $id = $c["id_"];
+                    $enabled = $c["enabled"];
+                    $ord = $c["ord"];
+                    
+                    $c["href"]["edit"] = site_url()."/admin/category/$id";
+                    $c["href"]["delete"] = site_url()."/admin/category/delete/$id";
+                    $c["href"]["update"] = site_url()."/admin/category/update/$id";
+                    $c["href"]["toggle"] = site_url()."/admin/category/toggle/$id/$enabled";
+                    $c["href"]["reorder"] = site_url()."/admin/category/reorder/$id/$ord";
+                    
+                    $c["class"] = "";
+                    if ($enabled) { $c["class"] = " enabled"; }
+                    $c["class"] = trim($c["class"]);
+                    
+                    $category = (object) $c;
+                }
+                
 		$this->__show("", "manager", "", "manager/overview",$data);
 	}	
         

@@ -17,24 +17,19 @@
 <label>Список категорий</label>
 <ul >
 <?php foreach ($categories as $cat) { ?>
-<li>
-<?php echo form_open('admin/category/update/'.$cat->id_); ?>
+<li class="<?php echo $cat->class; ?>" >
+<?php echo form_open($cat->href["update"]); ?>
 <?php echo form_input('title', $cat->title, 'title="заголовок"'); ?>
 <?php echo form_input('title_page', $cat->title_page, 'title="заголовок во вкладке браузера"'); ?>
 <?php echo form_input('title_menu', $cat->title_menu, 'title="заголовок в меню"'); ?>
 <?php echo form_submit('submit', 'submit', 'style="display:none;"'); ?>
 <a href="#" class="update">обновить</a>
-<a  href="<?php echo site_url()."/admin/category/toggle/$cat->id_/$cat->enabled"; ?>" 
-	class=<?php echo $cat->enabled?'show':'hide'; ?>
-	title="вкл/выкл"
->
-	&#9632;
-</a>
-<a href="<?php echo site_url()."/admin/category/$cat->id_"; ?>" class="edit">изменить</a>		
-<a href="<?php echo site_url()."/admin/category/delete/$cat->id_"; ?>" class="delete">удалить</a>
+<a href="<?php echo $cat->href["toggle"]; ?> "title="вкл/выкл" class="enable"> &#9632;</a>
+<a href="<?php echo $cat->href["edit"]; ?>" class="edit">изменить</a>		
+<a href="<?php echo $cat->href["delete"]; ?>" class="delete">удалить</a>
 <?php echo form_close(); ?>
 <?php
-	echo form_open("/admin/category/reorder/{$cat->id_}/{$cat->ord}");
+	echo form_open($cat->href["reorder"]);
 	echo form_dropdown('ord', $ords, $cat->ord, 'class="ord"');
 	echo form_close(); 
 ?>	
@@ -89,7 +84,11 @@
 
 <!-- Сообщения -->
 <div id="delete_confirm" title="Удалить категорию?" style="display:none">
-  <p><span class="" style="float: left; margin: 0 7px 20px 0;"></span>Точно? Категорию не возможно будет восстановить! >_></p>
+    <p>
+        <span class="" style="float: left; margin: 0 7px 20px 0;">
+            Точно? Категорию не возможно будет восстановить! >_>
+        </span>
+    </p>
 </div>
 <!-- Конец сообщений -->
 <!-- Скрипты для сообщений -->

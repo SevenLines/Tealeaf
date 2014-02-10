@@ -1,1 +1,1 @@
-mysqldump -u root -p  mmailmm8_data > dump.sql
+mysqldump -uroot -p12345  mmailmm8_data > dump.sql

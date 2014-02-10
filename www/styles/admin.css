@@ -131,10 +131,18 @@
 .enable { text-decoration: none;} 
 
 .article_list .remove { color:red; }
+
+.categories .enable, 
 .article_list .enable {color: silver;}
+
+.categories .enabled .enable, 
 .article_list .enabled .enable {color: #8F4;}
+
+.categories .enable:hover, 
 .article_list .enable:hover {color: green;}
-.article_list .enabled .enable:hover {color: silver;}
+
+.categories .enabled .enable:hover,
+.article_list .enabled .enable:hover {color: green;}
 
 .article_list .as_off {background-image: url("images/police_line.gif");}
 .article_list .as_off:hover {background-color: #FFFFEE;}

@@ -1,1 +1,5 @@
-rm tealeaf.zip & zip -r tealeaf.zip . -x *.zip *.sh *.git* *.settings* nbproject\*
+if [ -e tealeaf.zip ]
+then
+    rm tealeaf.zip
+fi
+zip -r tealeaf.zip . -x *.zip *.sh *.git* *.settings* nbproject\* process\*

@@ -1,1 +1,1 @@
-./make_archive_local.sh && ./make_archive_remote.sh
+./make_archive_local.sh && ./make_archive_remote.sh && ./make_archive_remote_without_files.sh
