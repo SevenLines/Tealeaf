@@ -112,30 +112,32 @@
 	height:16px;
 	margin-right:16px;
 	box-sizing: border-box;
+        -moz-box-sizing: border-box;
 }
 
 .article_list .edit:hover {
 	border: solid green 1px;
 }
 
-.article_list .top,
-.article_list .ntop {
-	width:16px;
-	padding:0;	
+.article_list .top { 
+    color: silver;
+    width:16px;
+    padding:0;
 }
+.article_list .top:hover { color: yellow;}
+.article_list .as_top .top { color: yellow; font-weight: bold;}
+.article_list .as_top .top:hover { color: silver;}
 
-.article_list .top { color: yellow; font-weight: bold;}
-.article_list .ntop { color: silver;}
-.article_list .top:hover { color: silver;}
-.article_list .ntop:hover { color: yellow;}
+.enable { text-decoration: none;} 
 
-.show, .hide { text-decoration: none;} 
+.article_list .remove { color:red; }
+.article_list .enable {color: silver;}
+.article_list .enabled .enable {color: #8F4;}
+.article_list .enable:hover {color: green;}
+.article_list .enabled .enable:hover {color: silver;}
 
-.article_list .delete { color:red; }
-.show {color: #8F4;}
-.hide {color: silver;}
-.show:hover {color: green;}
-.hide:hover {color:#8F4;}
+.article_list .as_off {background-image: url("images/police_line.gif");}
+.article_list .as_off:hover {background-color: #FFFFEE;}
 
 
 /* end of article_list specific */
@@ -160,6 +162,7 @@
 	padding: 4px;
 	margin-bottom:0.75em;
 	box-sizing: border-box;
+        -moz-box-sizing: border-box;
 	margin-top:0;
 }
 

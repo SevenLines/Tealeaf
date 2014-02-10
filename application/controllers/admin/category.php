@@ -7,10 +7,10 @@ class Category extends Admin_base {
 	
 	
 	function __construct()
-    {
-        parent::__construct();
-		$this->load->helper('form');
-    }
+        {
+            parent::__construct();
+                    $this->load->helper('form');
+        }
 
 	// returns data for selector form_dropdown()
 	// of all available ords
@@ -23,27 +23,56 @@ class Category extends Admin_base {
 	}
 
 	function index($category_id=null) {
-		if (!isset($category_id)) {
-			redirect('admin/categories');
-		}
-		
-		$data['status'] = $this->session->flashdata('status');
-		
-		if ($category_id == 0) {
-			$title = 'Без категории';	
-			$data['category2'] = '';
-		} else {
-			$data['category2'] = $this->ArticlesModel->get_category($category_id);
-			$title = "«{$data['category2']->title}» id: $category_id";
-		}
-		
-		$data['articles'] = $this->ArticlesModel->get_articles_info_list($category_id, -1);
-		
-		$data['ords'] = $this->__get_select_ord($data['articles']);
-		
-		$data['breadcrumbs'] = '<a href="'.site_url().'/admin"><< к выбору категорий</a>';
-		
-		$this->__show( $title, "Категория", "", "manager/category",$data, $category_id);
+            if (!isset($category_id)) {
+                    redirect('admin/categories');
+            }
+
+            $data['status'] = $this->session->flashdata('status');
+
+            if ($category_id == 0) {
+                    $title = 'Без категории';	
+                    $data['category2'] = '';
+            } else {
+                    $data['category2'] = $this->ArticlesModel->get_category($category_id);
+                    $title = "«{$data['category2']->title}» id: $category_id";
+            }
+
+            $data['articles'] = $this->ArticlesModel->get_articles_info_list($category_id, -1);
+            
+            // generate custom info for articles
+            $off_page_id = $this->OptionsModel->off_article_id();
+            foreach ($data['articles'] as &$a) {
+                $a = (array)$a;
+                
+                $id = $a['id_'];
+                $enabled = $a['enabled'];
+                
+                $a['href']['preview'] = site_url()."/admin/preview/$category_id/$id";
+                $a['href']['edit'] = site_url()."/admin/article/".$id;
+                $a['href']['toggle'] = site_url()."/admin/article/toggle/$id/$enabled";
+                $a['href']['remove'] = site_url()."/admin/article/delete/$id";
+                $a['href']['top'] = site_url()."/admin/article/top/$id";
+                $a['href']['reorder'] = "/admin/article/reorder/$id/$category_id/{$a['ord']}";
+                
+                $a['title_info'] = $a['title'];
+                if (empty($a['title_info'])) { $a['title_info'] =  $a['title_menu']; }
+                if (empty($a['title_info'])) { $a['title_info'] =  $a['title_page']; }
+                if (empty($a['title_info'])) { $a['title_info'] =  'без имени'; }
+                
+                $a['class'] = "";
+                if ($id == $off_page_id) { $a['class'] .= " as_off"; }
+                if ($a['top']) {$a['class'] .= " as_top"; }
+                if ($enabled) { $a['class'] .= " enabled"; }
+                $a['class'] = trim($a['class']);
+                
+                $a = (object)$a;
+            }
+
+            $data['ords'] = $this->__get_select_ord($data['articles']);
+
+            $data['breadcrumbs'] = '<a href="'.site_url().'/admin"><< к выбору категорий</a>';
+
+            $this->__show( $title, "Категория", "", "manager/category",$data, $category_id);
 	}	
 	
 	function update($category_id) {

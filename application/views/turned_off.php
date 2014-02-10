@@ -17,8 +17,11 @@
 	margin:0;
 	padding:0;        
     }
+    #login {
+    }
     
     #login form {
+/*        background-image: url("styles/images/police_line_100.gif");*/
         text-align: center;
     }
     #login input {

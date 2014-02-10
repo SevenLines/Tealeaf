@@ -22,18 +22,21 @@ class Article extends Admin_base {
                     redirect('admin/categories');
 		}
                 
-		$data['article2'] = $this->ArticlesModel->get_article($article_id);
+                
+		$data['articleInfo'] = $this->ArticlesModel->get_article($article_id);
 		$data['categories_list'] = $this->__get_categories_list($article_id);
-		if ( isset($data['article2']->category_id) ) {
-                    $category_name = $data['categories_list'][$data['article2']->category_id];
+                
+		if ( isset($data['articleInfo']->category_id) ) {
+                    $category_name = $data['categories_list'][$data['articleInfo']->category_id];
 		} else {
                     $category_name = 'без категории';
-                    $data['article2']->category_id = 0;
+                    $data['articleInfo']->category_id = 0;
 		}
+               
 		
-		$data['breadcrumbs'] = '<a href='.site_url().'/admin/category/'.$data['article2']->category_id.'>&lt;&lt; '.$category_name.'</a>';
-		$title = "«{$data['article2']->title}» id: $article_id";	
-		$this->__show( $title, "Статья", '', "manager/article", $data, $data['article2']->category_id);
+		$data['breadcrumbs'] = '<a href='.site_url().'/admin/category/'.$data['articleInfo']->category_id.'>&lt;&lt; '.$category_name.'</a>';
+		$title = "«{$data['articleInfo']->title}» id: $article_id";	
+		$this->__show( $title, "Статья", '', "manager/article", $data, $data['articleInfo']->category_id);
 	}	
 	
 	function update($article_id=null) {
@@ -107,10 +110,16 @@ class Article extends Admin_base {
 	}
 	
 	function top($article_id) {
-		$this->ArticlesModel->set_top_article($article_id);
-		$article_info = $this->ArticlesModel->get_article_info($article_id);
-		$this->session->set_flashdata('status', "<b>$article_info->title</b><br> теперь используется в качестве главной странице");
-		redirect($this->last_url);
+            $this->ArticlesModel->set_top_article($article_id);
+            $article_info = $this->ArticlesModel->get_article_info($article_id);
+            $this->session->set_flashdata('status', "<b>$article_info->title</b><br> теперь используется в качестве главной странице");
+            redirect($this->last_url);
 	}
+        
+        // установить в качестве страницы технического перерыва
+        function set_as_off_page($article_id) {
+            $this->OptionsModel->set_off_article_id($article_id);
+            redirect($this->last_url);
+        }
 	
 }

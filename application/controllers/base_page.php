@@ -1,17 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Base_page extends CI_Controller {
-	var $email = "mmailm.math@mail.ru";
-	var $base_view = 'base_page';
-        var $turnedoff_view = 'turnedoff';
-	var $last_url = '';
-	var $current_controller = '';
+	var $email = ""; // почта админа
+	var $base_view = 'base_page'; // вид для отображения контента
+        var $turnedoff_view = 'turnedoff'; // вид используемый для отображения статьи тех. перерыва
+	var $last_url = ''; // последняя ссылка
+	var $current_controller = ''; // текущей контроллер
 	var $rewrite_refer_url = TRUE; // TRUE means that every time u enter,  $this->session->set_userdata('refer', current_url()); called
 	var $flag = '';// some special flag
-	var $article_id = null;
-	var $status = '';
-	var $logged = '';
-        var $state = true;
+	var $article_id = null; // id текущей статьи
+	var $status = ''; 
+	var $logged = ''; // залоген ли пользователь
+        var $state = true; // активен ли сайт сейчас
 	
 	/**
 	 * Index Page for this controller.
@@ -97,12 +97,11 @@ class Base_page extends CI_Controller {
         $data['flag'] = $this->flag;
         $data['state'] = $this->state;
 
-
         
         $this->__fillMenuData($data, $category_id, $show_breadcrumbs);
 
         if (isset ($viewName)) {
-            // чтобы изюежать рекурсии
+            // чтобы избежать рекурсии
             if ($viewName != $main_view) {
                 $data['subview'] = $viewName;
             } 	
@@ -138,7 +137,7 @@ class Base_page extends CI_Controller {
      * показать страницу с отключенной информацией
      */
     public function __show_turned_off() {
-        $this->article_id = $this->OptionsModel->turned_off_article_id();
+        $this->article_id = $this->OptionsModel->off_article_id();
         $article_id = $this->article_id;
         if ( isset($article_id) && $article_id != 0 ) {  		
 

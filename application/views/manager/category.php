@@ -44,43 +44,28 @@ $(function() {
 <?php } ?>
 <label>Список статей</label>
 <ul>
-	<?php foreach($articles as $a) {?>
-		<li>
-			<a href="<?php echo site_url()."/admin/preview/$category_id/$a->id_"; ?>" class='preview'>
-				<?php
-					$_title = $a->title;  
-					if (empty($_title)) $_title =  $a->title_menu;
-					if (empty($_title)) $_title =  $a->title_page;
-					
-					if (empty($_title)) $_title = 'без имени';
-					echo $_title; 
-				?>
-			</a>
-			<a href="<?php echo site_url()."/admin/article/".$a->id_; ?>" title="редактор" class="edit">
-				
-			</a>
-			<a href="<?php echo site_url()."/admin/article/toggle/$a->id_/$a->enabled"; ?>" class=<?php echo $a->enabled?'show':'hide'; ?> title="вкл/выкл">&#9632;
-			</a>
-			<a href="<?php echo site_url().'/admin/article/delete/'.$a->id_ ?>" class='delete'>
-				rmv
-			</a>
-			<a href="<?php echo site_url()."/admin/article/top/$a->id_"; ?>" class=<?php echo $a->top?'top':'ntop'; ?> title="set as top">
-				&#9679;
-			</a>
-			<?php
-				echo form_open("/admin/article/reorder/{$a->id_}/{$a->category_id}/{$a->ord}");
-				echo form_dropdown('ord', $ords, $a->ord, 'class="ord"');
-				echo form_close(); 
-			?>	
-			
-		</li>
-	<?php } ?>
+<?php foreach($articles as $a) {?>
+    <li class="<?php echo $a->class; ?>">
+        <a href="<?php echo $a->href['preview']; ?>" class='preview'>
+            <?php echo $a->title_info;  ?>
+        </a>
+        <a href="<?php echo $a->href['edit']; ?>" title="редактор" class="edit" > </a>
+        <a href="<?php echo $a->href['toggle']; ?>" title="вкл/выкл" class="enable">&#9632;</a>
+        <a href="<?php echo $a->href['remove']; ?>" class="remove" class="remove">rmv</a>
+        <a href="<?php echo $a->href['top']; ?>" title="set as top" class="top">&#9679;</a>
+        <?php
+            echo form_open($a->href['reorder']);
+            echo form_dropdown('ord', $ords, $a->ord, 'class="ord"');
+            echo form_close(); 
+        ?>	
+    </li>
+<?php } ?>
 </ul>
 <?php
-	$category_id = isset($category2->id_)?$category2->id_:-1;
-	echo form_open("admin/article/add/$category_id/new", 'id="add"');
-	echo form_submit('submit', 'Добавить статью');
-	echo form_close();
+    $category_id = isset($category2->id_)?$category2->id_:-1;
+    echo form_open("admin/article/add/$category_id/new", 'id="add"');
+    echo form_submit('submit', 'Добавить статью');
+    echo form_close();
 ?>
 </div>
 <script type="text/javascript">
@@ -98,7 +83,6 @@ $(function() {
 <!-- Конец сообщений -->
 
 <!-- Скрипты для сообщений -->
-
 <script type="text/javascript">
 	$('.delete').click(function() {
 		var a = this;

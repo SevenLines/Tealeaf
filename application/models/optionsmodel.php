@@ -18,15 +18,19 @@ class OptionsModel extends CI_Model {
         return $query->row()->value;
     }
     
-    function turned_off_article_id() {
+    function off_article_id() {
         $this->db->where('name', 'turned_off_article_id');
         $query = $this->db->get($this->optionsTable);
         
         if($query->num_rows() == 0 ) return null;
         return $query->row()->value;
     }
-
-
+    
+    function set_off_article_id($article_id) {
+        $data['value'] = $article_id;
+        $this->db->where('name', 'turned_off_article_id');
+        $query = $this->db->update($this->optionsTable, $data);
+    }
 
     // почта администратора
     function email() {
