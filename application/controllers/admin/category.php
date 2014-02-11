@@ -36,8 +36,14 @@ class Category extends Admin_base {
                     $data['category2'] = $this->ArticlesModel->get_category($category_id);
                     $title = "«{$data['category2']->title}» id: $category_id";
             }
-
+            
             $data['articles'] = $this->ArticlesModel->get_articles_info_list($category_id, -1);
+            
+            // generate specific category info 
+            $c = (array) $data['category2'];
+            $c['href']['toggle'] = site_url()."/admin/category/toggle/$category_id/{$c['enabled']}";
+            $c['href']['update'] = site_url()."/admin/category/update/$category_id";
+            $data['category2']= (object) $c;
             
             // generate custom info for articles
             $off_page_id = $this->OptionsModel->off_article_id();

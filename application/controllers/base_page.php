@@ -187,14 +187,18 @@ class Base_page extends CI_Controller {
                 show_404();
             }
             
-            // отключенный категории можно просмотреть только администратору
-            if ( !$this->logged && !$data['articles_info']->enabled ) {
-                redirect("admin/preview/{$data['articles_info']->category_id}/$article_id");
+            // отключенные статьи можно просмотреть только администратору
+            $c = $this->ArticlesModel->get_category($data['articles_info']->category_id);
+            if ( !$this->logged ) { 
+                 if (!$data['articles_info']->enabled || !$c->enabled ) {
+                    redirect("admin/preview/{$data['articles_info']->category_id}/$article_id");
+                 }
             }
 
             # track visits only if user is not admin
-            if(!$this->logged)
+            if (!$this->logged) {
                 $this->ArticlesModel->inc_article_visit($article_id);
+            }
 
             # show article
             $this->__show(  $data['articles_info']->title,

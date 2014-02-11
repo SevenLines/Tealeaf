@@ -8,8 +8,17 @@ $(function() {
 
 <div class="category">
 <?php if ( isset($category2->id_) ) { ?>
+    <?php echo form_open($category2->href['toggle']); ?>
+    <?php 
+    if ($category2->enabled) {     
+       echo form_submit('submit','выключить');
+    } else {
+       echo form_submit('submit','включить'); 
+    }
+    ?>    
+    <?php echo form_close(); ?>
 <?php
-	echo form_open('admin/category/update/'.$category2->id_);
+	echo form_open($category2->href['update']);
 	
 	echo form_label('заголовок', 'title');
 	echo form_input('title',$category2->title);

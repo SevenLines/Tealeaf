@@ -9,10 +9,21 @@ $(function() {
 });
 </script>
 <div class='article'>
+<div style="float:left;clear:none;padding-right:1em">
+<?php
+    echo form_open($articleInfo->href['toggle']);
+    if ( $articleInfo->enabled ) {
+        echo form_submit("toggle", "выключить");
+    } else {
+        echo form_submit("toggle", "включить");
+    }
+    echo form_close();
+?>  
+</div>
 <div style="float:left;clear:none">
 <?php
-    if ( $this->OptionsModel->off_article_id() != $articleInfo->id_) {
-        echo form_open("admin/article/set_as_off_page/$articleInfo->id_");
+    if ( !$articleInfo->is_off ) {
+        echo form_open($articleInfo->href['set_as_off_page']);
         echo form_submit("useAsOffPage", "тех. перерыв");
         echo form_close();
     }
@@ -20,8 +31,7 @@ $(function() {
 </div>
 <div style="float:right;clear:none;font-size: 0.8em">обновлялось: <?php echo date('H:i - d/m/Y', $articleInfo->date_update); ?> </div>
 <?php
-    echo form_open("admin/article/update/$articleInfo->id_");
-
+    echo form_open($articleInfo->href['update']);
     echo form_label('категория', 'category_id');
     echo form_dropdown('category_id', $categories_list, $articleInfo->category_id);
 ?>
