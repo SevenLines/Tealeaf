@@ -74,6 +74,29 @@
 	border-collapse: collapse
 }
 
+.visits tr{
+     /*max-height: 50px;*/  
+     /*height: 20px;*/
+     /*overflow: hidden;*/
+     max-height:50px;
+     /*overflow: hidden*/
+}
+
+.visits td {
+    overflow: hidden;
+    
+    /*height: 20px;*/
+    /*max-height: 50px;*/      
+    /*width: 25%;*/
+}
+
+.visits td.refferer{
+    /*text-align: left;*/
+    /*max-width:100px;*/
+    overflow: scroll;
+    /*word-wrap: normal;*/
+    width:100px;
+}
 
 /* end visits specific */
 

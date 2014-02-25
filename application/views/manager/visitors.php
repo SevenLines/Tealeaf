@@ -19,9 +19,11 @@
 			<td>
 				<?php echo $v->agent ;?>
 			</td>	
-			<td>
+			<td class="refferer">
 				<?php if($v->referrer) { ?>			
-				<a href="<?php echo $v->referrer ;?>"><?php echo $v->referrer ;?></a>
+				<a href="<?php echo $v->referrer ;?>">
+                                    &gt;&gt;&gt; <?php // echo $v->referrer; ?>
+                                </a>
 				<?php } else {?>
 				
 				<?php } ?>

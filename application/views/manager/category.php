@@ -93,7 +93,7 @@ $(function() {
 
 <!-- Скрипты для сообщений -->
 <script type="text/javascript">
-	$('.delete').click(function() {
+	$('.remove').click(function() {
 		var a = this;
 		$("#delete_confirm" ).dialog({
 	      resizable: false,

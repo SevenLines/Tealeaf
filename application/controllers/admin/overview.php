@@ -28,7 +28,7 @@ class Overview extends Admin_base {
 		$data['categories'] = $this->ArticlesModel->get_categories();
 		$data['active_users'] = $this->VisitorsModel->get_current_visitors();
 		$data['visitors'] = $this->StatsModel->get_last_visitiors(0,20);
-		$data['articles_stat'] = $this->ArticlesModel->get_most_visited_articles_info();
+		$data['articles_stat'] = $this->ArticlesModel->get_most_visited_articles_info(20);
 		$data['ords'] = $this->__get_select_ord($data['categories']);
                 
                 //generate specific categories info 

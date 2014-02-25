@@ -301,20 +301,20 @@ hr {
 /* tasks */
 
 .tasks {
-	padding-left:2em;
+/*    padding-left:2em;*/
+    overflow: hidden;
 }
 
 .tasks li {
-	margin: 0.5em 0;
-	padding: 0.5em;
-	border-radius: 10px;
-	background: #EEEEEE;
-	border:silver 1px solid;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    border-radius: 10px;
+    background: #EEEEEE;
+    border:silver 1px solid;
 }
 
 .tasks li a { color:#003366; }
 .tasks li a:hover { color:black; }
-
 
 
 .tasks li.easy,
@@ -324,16 +324,39 @@ hr {
 	border:gray 1px solid;
 }
 
-.tasks li.easy {background-color: #88DD22;}
-.tasks li.medium {	background-color: #DDDD22; }
-.tasks li.hard { background-color: #DD8822; }
-.tasks li.nightmare { background-color: #DD2200; }
+.tasks .easy {background-color: #88DD22;}
+.tasks .medium {background-color: #DDDD22; }
+.tasks .hard {background-color: #DD8822; }
+.tasks .nightmare { background-color: #DD2200; }
 
-.tasks li.selected {
-	background:silver;
-	color: gray;
+.tasks .selected {
+    background:silver;
+    color: gray;
 }
 
+.tasks .gallery {
+    overflow: hidden;
+    float: left;
+}
+
+.tasks .gallery .item{
+    padding: 8px;
+    margin: 8px;
+    margin-left:0;
+    border:gray 1px solid;
+    float:left;  
+    border-radius: 4px;
+}
+
+.tasks .gallery .item .label {
+    text-align: center; 
+    font-weight: bold;
+}
+
+.tasks .gallery .item img {
+    border: 1px solid gray;
+    width:100px;
+}
 
 
 /* end tasks */
