@@ -79,7 +79,7 @@ class Base_page extends CI_Controller {
             $c['class'] = "";
             if ($c['active']) { $c['class'] .= " active"; }
             $c['class'] = trim($c['class']);
-            $c['href'] = site_url()."/page/{$c['id_']}";
+            $c['href'] = site_url()."page/{$c['id_']}";
         }
     } 
 
@@ -111,6 +111,10 @@ class Base_page extends CI_Controller {
         
         $this->__fillMenuData($data, $category_id, $show_breadcrumbs);
 
+        if(isset($data['breadcrumbs'])) {
+            $data['title_page'] = $title_page." - ".$data['breadcrumbs'];
+        }
+        
         if (isset ($viewName)) {
             // чтобы избежать рекурсии
             if ($viewName != $main_view) {

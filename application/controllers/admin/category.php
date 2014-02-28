@@ -41,8 +41,8 @@ class Category extends Admin_base {
             
             // generate specific category info 
             $c = (array) $data['category2'];
-            $c['href']['toggle'] = site_url()."/admin/category/toggle/$category_id/{$c['enabled']}";
-            $c['href']['update'] = site_url()."/admin/category/update/$category_id";
+            $c['href']['toggle'] = site_url()."admin/category/toggle/$category_id/{$c['enabled']}";
+            $c['href']['update'] = site_url()."admin/category/update/$category_id";
             $data['category2']= (object) $c;
             
             // generate custom info for articles
@@ -53,12 +53,12 @@ class Category extends Admin_base {
                 $id = $a['id_'];
                 $enabled = $a['enabled'];
                 
-                $a['href']['preview'] = site_url()."/admin/preview/$category_id/$id";
-                $a['href']['edit'] = site_url()."/admin/article/".$id;
-                $a['href']['toggle'] = site_url()."/admin/article/toggle/$id/$enabled";
-                $a['href']['remove'] = site_url()."/admin/article/delete/$id";
-                $a['href']['top'] = site_url()."/admin/article/top/$id";
-                $a['href']['reorder'] = "/admin/article/reorder/$id/$category_id/{$a['ord']}";
+                $a['href']['preview'] = site_url()."admin/preview/$category_id/$id";
+                $a['href']['edit'] = site_url()."admin/article/".$id;
+                $a['href']['toggle'] = site_url()."admin/article/toggle/$id/$enabled";
+                $a['href']['remove'] = site_url()."admin/article/delete/$id";
+                $a['href']['top'] = site_url()."admin/article/top/$id";
+                $a['href']['reorder'] = site_url()."admin/article/reorder/$id/$category_id/{$a['ord']}";
                 
                 $a['title_info'] = $a['title'];
                 if (empty($a['title_info'])) { $a['title_info'] =  $a['title_menu']; }

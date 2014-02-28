@@ -1,0 +1,3 @@
+ Disallow: /www/files/
+ Disallow: /index.php/admin
+ Disallow: /www/images/

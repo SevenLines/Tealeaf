@@ -26,7 +26,7 @@
             <ul>
                 <?php foreach ($c['articles'] as $article) {?>
                     <li>
-                        <a href="<?php echo site_url()."/page/{$c['id_']}/{$article['id']}"; ?>">
+                        <a href="<?php echo site_url()."page/{$c['id_']}/{$article['id']}"; ?>">
                             <?php echo $article['title_menu']?>
                         </a>
                     </li>

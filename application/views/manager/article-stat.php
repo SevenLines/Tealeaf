@@ -10,7 +10,7 @@
 		</tr>
 	<?php foreach($articles_stat as $a) { ?>
 		<tr>
-			<td><a href="<?php echo site_url()."/page/$a->category_id/$a->id_" ?>"><?php echo $a->title; ?></a></td>
+			<td><a href="<?php echo site_url()."page/$a->category_id/$a->id_" ?>"><?php echo $a->title; ?></a></td>
 			<td><?php echo $a->visits; ?> </td>
 			<td><?php echo date('H:i - d/m/Y',$a->date_create); ?> </td>
 			<td><?php echo date('H:i - d/m/Y',$a->date_update); ?> </td>

@@ -38,11 +38,11 @@ class Overview extends Admin_base {
                     $enabled = $c["enabled"];
                     $ord = $c["ord"];
                     
-                    $c["href"]["edit"] = site_url()."/admin/category/$id";
-                    $c["href"]["delete"] = site_url()."/admin/category/delete/$id";
-                    $c["href"]["update"] = site_url()."/admin/category/update/$id";
-                    $c["href"]["toggle"] = site_url()."/admin/category/toggle/$id/$enabled";
-                    $c["href"]["reorder"] = site_url()."/admin/category/reorder/$id/$ord";
+                    $c["href"]["edit"] = site_url()."admin/category/$id";
+                    $c["href"]["delete"] = site_url()."admin/category/delete/$id";
+                    $c["href"]["update"] = site_url()."admin/category/update/$id";
+                    $c["href"]["toggle"] = site_url()."admin/category/toggle/$id/$enabled";
+                    $c["href"]["reorder"] = site_url()."admin/category/reorder/$id/$ord";
                     
                     $c["class"] = "";
                     if ($enabled) { $c["class"] = " enabled"; }

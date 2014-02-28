@@ -35,13 +35,13 @@ class Article extends Admin_base {
                
                 // generate specific info for article
                 $a = (array) $data['articleInfo'];
-                $a['href']['update'] = site_url()."/admin/article/update/{$a["id_"]}";
-                $a['href']['toggle'] = site_url()."/admin/article/toggle/{$a['id_']}/{$a['enabled']}";
-                $a['href']['set_as_off_page'] = site_url()."/admin/article/set_as_off_page/{$a["id_"]}";
+                $a['href']['update'] = site_url()."admin/article/update/{$a["id_"]}";
+                $a['href']['toggle'] = site_url()."admin/article/toggle/{$a['id_']}/{$a['enabled']}";
+                $a['href']['set_as_off_page'] = site_url()."admin/article/set_as_off_page/{$a["id_"]}";
                 $a["is_off"] = $this->OptionsModel->off_article_id() == $a["id_"];
                 $data['articleInfo'] = (object) $a;
 		
-		$data['breadcrumbs'] = '<a href='.site_url().'/admin/category/'.$data['articleInfo']->category_id.'>&lt;&lt; '.$category_name.'</a>';
+		$data['breadcrumbs'] = '<a href='.site_url().'admin/category/'.$data['articleInfo']->category_id.'>&lt;&lt; '.$category_name.'</a>';
 		$title = "«{$data['articleInfo']->title}» id: $article_id";	
 		$this->__show( $title, "Статья", '', "manager/article", $data, $data['articleInfo']->category_id);
 	}	
